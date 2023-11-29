@@ -1,0 +1,27 @@
+{
+  "cSpell.words": [
+    "callees",
+    "clsx",
+    "ianvs",
+    "lucide",
+    "preinstall",
+    "tailwindcss",
+    "trivago",
+    "typecheck"
+  ],
+  "tailwindCSS.includeLanguages": {
+    "plaintext": "html"
+  },
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["tw=\"([^\"]*)\""]
+  ],
+  "eslint.run": "onSave",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ]
+}
