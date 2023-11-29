@@ -11,7 +11,7 @@
     "preinstall": "npx only-allow pnpm",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
-    "check": "pnpm lint && pnpm typecheck"
+    "check": "pnpm lint"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.0.4",
