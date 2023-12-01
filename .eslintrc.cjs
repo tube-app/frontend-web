@@ -4,7 +4,7 @@ const config = {
   parserOptions: {
     project: true,
   },
-  plugins: ["@typescript-eslint", "tailwindcss"],
+  plugins: ["@typescript-eslint", "tailwindcss", "eslint-plugin-unicorn"],
   extends: [
     "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended-type-checked",
@@ -28,6 +28,19 @@ const config = {
       {
         checksVoidReturn: { attributes: false },
       },
+    ],
+    "unicorn/filename-case": [
+      "error",
+      {
+        cases: {
+          kebabCase: true,
+        },
+      },
+    ],
+    "no-console": ["error", { allow: ["warn", "error"] }],
+    "padding-line-between-statements": [
+      "error",
+      { blankLine: "always", prev: "*", next: "return" },
     ],
   },
   settings: {
