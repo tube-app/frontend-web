@@ -36,7 +36,9 @@ export default function AnalysisPage() {
           prevNum={804}
           percentage={53.4}
         />
-      </section>
+      <div>
+        <p className="text-2xl font-bold">コメント返信状況</p>
+      </div>
     </div>
   )
 }
