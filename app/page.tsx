@@ -28,12 +28,11 @@ export default function AnalysisPage() {
           title="1動画当たりのコメント数"
           currentNum={123}
           prevNum={92}
-          isPlus
         />
         <SectionCard
           title="1動画当たりの高評価数"
-          currentNum={1234}
-          prevNum={804}
+          currentNum={804}
+          prevNum={1234}
         />
       </div>
       <div>
@@ -70,13 +69,14 @@ function SectionCard({
   title,
   currentNum,
   prevNum,
-  isPlus = false,
 }: {
   title: string
   currentNum: number
   prevNum: number
-  isPlus?: boolean
 }) {
+  const percentage = calculateMonthlyPercentage(currentNum, prevNum)
+  const isPlus = !percentage.includes("-")
+
   return (
     <Card className="gap-2 px-3 py-2">
       <CardHeader className="p-0">
@@ -96,7 +96,7 @@ function SectionCard({
         >
           {isPlus && <ArrowUpRight />}
           {!isPlus && <ArrowDownRight />}
-          <span>{`${calculateMonthlyPercentage(currentNum, prevNum)}%`}</span>
+          <span>{`${percentage.replace("-", "")}%`}</span>
         </Badge>
       </CardContent>
     </Card>
