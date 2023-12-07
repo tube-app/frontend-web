@@ -27,3 +27,20 @@ export function getAbsoluteValueRoundedToOneDecimal(num: number): number {
 
   return parseFloat(absoluteValue.toFixed(1))
 }
+
+export const fetcher = async <T>({
+  url,
+  headers,
+  tag,
+}: {
+  url: string
+  headers?: HeadersInit
+  tag?: string
+}): Promise<T> => {
+  const response = await fetch(url, {
+    ...(headers ? { headers } : {}),
+    ...(tag ? { next: { tags: [tag] } } : {}),
+  })
+
+  return response.json() as Promise<T>
+}
