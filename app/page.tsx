@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { ArrowDownRight, ArrowUpRight } from "lucide-react"
 
+import { calculateMonthlyPercentage } from "@/lib/utils"
 import { Avatar, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -15,27 +16,26 @@ export default function AnalysisPage() {
     <div className="flex flex-col gap-10 px-3 py-5">
       <MyChannel
         image="https://github.com/shadcn.png"
-        name="しまぶーのIT大学"
+        name="しまぶーのIT大学しまぶーのIT大学しまぶーのIT大学しまぶーのIT大学しまぶーのIT大学しまぶーのIT大学しまぶーのIT大学"
         subscribers={118000}
       />
-      <section className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2">
         <div className="flex items-center justify-between">
-          <p className="text-2xl font-bold text-[#000]">重要指標</p>
+          <p className="text-2xl font-bold">重要指標</p>
           <p className="text-sm text-[#999]">過去28日間</p>
         </div>
         <SectionCard
           title="1動画当たりのコメント数"
           currentNum={123}
           prevNum={92}
-          percentage={33.6}
           isPlus
         />
         <SectionCard
           title="1動画当たりの高評価数"
           currentNum={1234}
           prevNum={804}
-          percentage={53.4}
         />
+      </div>
       <div>
         <p className="text-2xl font-bold">コメント返信状況</p>
       </div>
@@ -58,8 +58,8 @@ function MyChannel({
         <AvatarImage src={image} />
       </Avatar>
       <div className="flex flex-col items-start justify-center">
-        <p className="text-lg">{name}</p>
-        <p className="text-3xl font-bold">{subscribers.toLocaleString()}</p>
+        <p className="line-clamp-1 text-lg">{name}</p>
+        <p className="text-2xl font-bold">{subscribers.toLocaleString()}</p>
         <p className="text-sm text-[#999]">チャンネル登録者</p>
       </div>
     </div>
@@ -70,13 +70,11 @@ function SectionCard({
   title,
   currentNum,
   prevNum,
-  percentage,
   isPlus = false,
 }: {
   title: string
   currentNum: number
   prevNum: number
-  percentage: number
   isPlus?: boolean
 }) {
   return (
@@ -98,7 +96,7 @@ function SectionCard({
         >
           {isPlus && <ArrowUpRight />}
           {!isPlus && <ArrowDownRight />}
-          <span>{`${percentage}%`}</span>
+          <span>{`${calculateMonthlyPercentage(currentNum, prevNum)}%`}</span>
         </Badge>
       </CardContent>
     </Card>
