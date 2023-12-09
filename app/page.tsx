@@ -22,7 +22,7 @@ export default function AnalysisPage() {
       <div className="flex flex-col gap-2">
         <div className="flex items-center justify-between">
           <p className="text-2xl font-bold">重要指標</p>
-          <p className="text-sm text-[#999]">過去28日間</p>
+          <p className="text-sm text-muted-foreground">過去28日間</p>
         </div>
         <AnalyticsCard
           title="1動画当たりのコメント数"

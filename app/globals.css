@@ -33,6 +33,12 @@
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
+
+    --warning: 0, 100%, 34%;
+    --warning-foreground: 0, 100%, 90%;
+
+    --success: 120, 100%, 34%;
+    --success-foreground: 120, 100%, 88%;
   }
 
   .dark {
@@ -63,6 +69,12 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+    /* TODO: 暫定で色の定義を追加 */
+    --warning: 0 62.8% 30.6%;
+    --warning-foreground: 210 40% 98%;
+    /* TODO: 暫定で色の定義を追加 */
+    --success: 120, 100%, 30.6%;
+    --success-foreground: 120, 100%, 98%;
   }
 }
 
