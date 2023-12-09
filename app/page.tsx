@@ -13,8 +13,8 @@ export const metadata: Metadata = {
 
 export default function AnalysisPage() {
   return (
-    <div className="flex flex-col gap-10 px-3 py-5">
-      <MyChannel
+    <div className="flex flex-col gap-10">
+      <ChannelStats
         image="https://github.com/shadcn.png"
         name="しまぶーのIT大学しまぶーのIT大学しまぶーのIT大学しまぶーのIT大学しまぶーのIT大学しまぶーのIT大学しまぶーのIT大学"
         subscribers={118000}
@@ -24,12 +24,12 @@ export default function AnalysisPage() {
           <p className="text-2xl font-bold">重要指標</p>
           <p className="text-sm text-[#999]">過去28日間</p>
         </div>
-        <SectionCard
+        <AnalyticsCard
           title="1動画当たりのコメント数"
           currentNum={123}
           prevNum={92}
         />
-        <SectionCard
+        <AnalyticsCard
           title="1動画当たりの高評価数"
           currentNum={804}
           prevNum={1234}
@@ -42,7 +42,7 @@ export default function AnalysisPage() {
   )
 }
 
-function MyChannel({
+function ChannelStats({
   image,
   name,
   subscribers,
@@ -59,13 +59,13 @@ function MyChannel({
       <div className="flex flex-col items-start justify-center">
         <p className="line-clamp-1 text-lg">{name}</p>
         <p className="text-2xl font-bold">{subscribers.toLocaleString()}</p>
-        <p className="text-sm text-[#999]">チャンネル登録者</p>
+        <p className="text-sm text-muted-foreground">チャンネル登録者</p>
       </div>
     </div>
   )
 }
 
-function SectionCard({
+function AnalyticsCard({
   title,
   currentNum,
   prevNum,
@@ -86,16 +86,15 @@ function SectionCard({
         <div className="flex items-baseline gap-2">
           <p className="text-4xl font-bold">{currentNum.toLocaleString()}</p>
           <div className="flex">
-            <p className="text-[#999]">前月</p>
-            <p className="text-[#999]">{prevNum.toLocaleString()}</p>
+            <p className="text-muted-foreground">前月</p>
+            <p className="text-muted-foreground">{prevNum.toLocaleString()}</p>
           </div>
         </div>
         <Badge
           variant={isPlus ? "plus" : "minus"}
           className="flex items-center justify-center gap-1 text-sm"
         >
-          {isPlus && <ArrowUpRight />}
-          {!isPlus && <ArrowDownRight />}
+          {isPlus ? <ArrowUpRight /> : <ArrowDownRight />}
           <span>{`${percentage.replace("-", "")}%`}</span>
         </Badge>
       </CardContent>

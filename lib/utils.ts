@@ -16,11 +16,7 @@ export function calculateMonthlyPercentage(
   prevNum: number
 ) {
   if (prevNum === 0) {
-    if (currentNum === 0) {
-      return "0.0%" // 前月、今月がどちらも0の場合
-    }
-
-    return "-" // 前月が0、今月が何かしらの値の場合
+    return currentNum === 0 ? "0.0" : "-"
   }
 
   return (((currentNum - prevNum) / Math.abs(prevNum)) * 100).toFixed(1)
