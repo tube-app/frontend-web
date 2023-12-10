@@ -17,7 +17,7 @@ export default function CommentsPage({
   const tabValue = (searchParams.tab as string) || "core-fan"
 
   return (
-    <div className="grid h-full gap-2 py-4 lg:py-6">
+    <div className="grid h-full gap-2">
       <h1 className="text-2xl font-bold">コメント一覧</h1>
       <Tabs defaultValue={tabValue} className="mr-4  h-full space-y-4 sm:mr-0">
         <TabsList>

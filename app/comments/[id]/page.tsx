@@ -26,7 +26,7 @@ export default function CommentDetailsPage({
   const isHeart = false
 
   return (
-    <div className="grid h-full gap-2 py-4 lg:py-6">
+    <div className="grid h-full gap-2">
       <div className="flex items-center gap-2">
         <Link
           href={`/comments?tab=${tab}`}
@@ -38,7 +38,7 @@ export default function CommentDetailsPage({
       </div>
       <div className="flex items-start space-x-4">
         <Avatar>
-          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />{" "}
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
         <div className="grid gap-1">
