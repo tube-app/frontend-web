@@ -6,7 +6,8 @@ import "./globals.css"
 import { type PropsWithChildren } from "react"
 
 import { cn } from "@/lib/utils"
-import { Sidebar } from "@/components/layouts/sidebar"
+import { BottomNavbar } from "@/components/layouts/bottom-navbar"
+import { SideNavbar } from "@/components/layouts/side-navbar"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -18,9 +19,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="ja">
-      <body className={cn(inter.className, "container flex")}>
-        <Sidebar className="hidden max-w-[240px] lg:block" />
-        <main className="flex-1">{children}</main>
+      <body className={cn(inter.className)}>
+        <div className="container flex py-4 lg:py-6">
+          <SideNavbar className="hidden max-w-[240px] lg:block" />
+          <main className="flex-1 pb-12 lg:pb-0">{children}</main>
+        </div>
+        <BottomNavbar className="flex lg:hidden" />
       </body>
     </html>
   )
