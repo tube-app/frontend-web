@@ -20,16 +20,18 @@ export default function CoreFansPage() {
       </div>
       <ul className="flex flex-col gap-3">
         {commentRankingList.map((item, index) => (
-          <li key={item.id}>
-            <CommentRankingItem
-              key={item.id}
-              rank={index + 1}
-              name={item.name}
-              id={item.id}
-              image={item.image}
-              commentNum={item.commentNum}
-            />
-          </li>
+          // TODO: コアファンのコメントページのパスを指定
+          <Link key={item.id} href={`/core-fans?id=${item.id}`}>
+            <li>
+              <CommentRankingItem
+                rank={index + 1}
+                name={item.name}
+                id={item.id}
+                image={item.image}
+                commentNum={item.commentNum}
+              />
+            </li>
+          </Link>
         ))}
       </ul>
     </div>
@@ -50,8 +52,7 @@ function CommentRankingItem({
   commentNum: number
 }) {
   return (
-    // TODO: コアファンのコメントページのパスを指定
-    <Link href={`/core-fans?id=${id}`} className="flex items-center gap-1">
+    <div className="flex items-center gap-1">
       <span className="w-8 text-2xl font-bold">{rank}</span>
       <div className="flex flex-1 items-center gap-2">
         <Avatar className="h-14 w-14">
@@ -64,7 +65,7 @@ function CommentRankingItem({
       </div>
       <p className="text-xl">{commentNum}</p>
       <ChevronRight size={24} className="text-muted-foreground" />
-    </Link>
+    </div>
   )
 }
 
