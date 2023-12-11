@@ -49,15 +49,18 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // TODO: 暫定で色の定義を追加
-        warning: {
-          DEFAULT: "hsl(var(--warning))",
-          foreground: "hsl(var(--warning-foreground))",
-        },
-        // TODO: 暫定で色の定義を追加
-        success: {
-          DEFAULT: "hsl(var(--success))",
-          foreground: "hsl(var(--success-foreground))",
+        /* radix-colors */
+        yt: {
+          red: {
+            3: "hsl(var(--yt-red-3))",
+            7: "hsl(var(--yt-red-7))",
+            11: "hsl(var(--yt-red-11))",
+          },
+          green: {
+            3: "hsl(var(--yt-green-3))",
+            7: "hsl(var(--yt-green-7))",
+            11: "hsl(var(--yt-green-11))",
+          },
         },
       },
       borderRadius: {
