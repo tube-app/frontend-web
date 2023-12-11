@@ -1,7 +1,10 @@
 import type { Metadata } from "next"
 import { ArrowDownRight, ArrowUpRight } from "lucide-react"
 
-import { calculateMonthlyPercentage } from "@/lib/utils"
+import {
+  computeMonthOverMonthChangeRate,
+  getAbsoluteValueRoundedToOneDecimal,
+} from "@/lib/utils"
 import { Avatar, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -74,8 +77,8 @@ function AnalyticsCard({
   currentNum: number
   prevNum: number
 }) {
-  const percentage = calculateMonthlyPercentage(currentNum, prevNum)
-  const isPlus = !percentage.includes("-")
+  const rowPercentage = computeMonthOverMonthChangeRate(currentNum, prevNum)
+  const isPlus = rowPercentage > 0 ? true : false
 
   return (
     <Card className="gap-2 px-3 py-2">
@@ -90,13 +93,17 @@ function AnalyticsCard({
             <p className="text-muted-foreground">{prevNum.toLocaleString()}</p>
           </div>
         </div>
-        <Badge
-          variant={isPlus ? "plus" : "minus"}
-          className="flex items-center justify-center gap-1 text-sm"
-        >
-          {isPlus ? <ArrowUpRight /> : <ArrowDownRight />}
-          <span>{`${percentage.replace("-", "")}%`}</span>
-        </Badge>
+        {rowPercentage !== 0 ? (
+          <Badge
+            variant={isPlus ? "plus" : "minus"}
+            className="flex items-center justify-center gap-1 text-sm"
+          >
+            {isPlus ? <ArrowUpRight /> : <ArrowDownRight />}
+            <span>
+              {`${getAbsoluteValueRoundedToOneDecimal(rowPercentage)}%`}
+            </span>
+          </Badge>
+        ) : null}
       </CardContent>
     </Card>
   )
