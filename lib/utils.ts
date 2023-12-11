@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 /**
- * 先月と今月の数値から少数第一位までを表示する先月比を計算する
+ * 先月と今月の数値から先月比を計算する
  * @param currentNum
  * @param prevNum
  * @returns
