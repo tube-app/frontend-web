@@ -11,13 +11,19 @@ export function cn(...inputs: ClassValue[]) {
  * @param prevNum
  * @returns
  */
-export function calculateMonthlyPercentage(
+export function computeMonthOverMonthChangeRate(
   currentNum: number,
   prevNum: number
 ) {
-  if (prevNum === 0) {
-    return currentNum === 0 ? "0.0" : "-"
+  if (prevNum === 0 || currentNum === 0) {
+    return 0
   }
 
-  return (((currentNum - prevNum) / Math.abs(prevNum)) * 100).toFixed(1)
+  return ((currentNum - prevNum) / prevNum) * 100
+}
+
+export function getAbsoluteValueRoundedToOneDecimal(num: number): number {
+  const absoluteValue = Math.abs(num)
+
+  return parseFloat(absoluteValue.toFixed(1))
 }
