@@ -16,13 +16,13 @@ export default function CoreFansPage() {
     <div className="flex flex-col gap-5">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold">コメント数ランキング</h1>
-        <p className="text-sm text-muted-foreground">全期間</p>
+        <span className="text-sm text-muted-foreground">全期間</span>
       </div>
       <ul className="flex flex-col gap-3">
         {commentRankingList.map((item, index) => (
-          // TODO: コアファンのコメントページのパスを指定
-          <Link key={item.id} href={`/core-fans?id=${item.id}`}>
-            <li>
+          <li key={item.id}>
+            {/* TODO: コアファンのコメントページのパスを指定 */}
+            <Link href={`/core-fans?id=${item.id}`}>
               <CommentRankingItem
                 rank={index + 1}
                 name={item.name}
@@ -30,8 +30,8 @@ export default function CoreFansPage() {
                 image={item.image}
                 commentNum={item.commentNum}
               />
-            </li>
-          </Link>
+            </Link>
+          </li>
         ))}
       </ul>
     </div>
@@ -59,11 +59,11 @@ function CommentRankingItem({
           <AvatarImage src={image} />
         </Avatar>
         <div className="flex flex-col">
-          <p>{name}</p>
-          <p className="text-xs text-muted-foreground">{`@${id}`}</p>
+          <span>{name}</span>
+          <span className="text-xs text-muted-foreground">{`@${id}`}</span>
         </div>
       </div>
-      <p className="text-xl">{commentNum}</p>
+      <span className="text-xl">{commentNum}</span>
       <ChevronRight size={24} className="text-muted-foreground" />
     </div>
   )
