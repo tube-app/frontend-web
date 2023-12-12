@@ -49,6 +49,19 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        /* radix-colors */
+        yt: {
+          red: {
+            3: "hsl(var(--yt-red-3))",
+            7: "hsl(var(--yt-red-7))",
+            11: "hsl(var(--yt-red-11))",
+          },
+          green: {
+            3: "hsl(var(--yt-green-3))",
+            7: "hsl(var(--yt-green-7))",
+            11: "hsl(var(--yt-green-11))",
+          },
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
