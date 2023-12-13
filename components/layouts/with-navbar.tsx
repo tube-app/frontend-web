@@ -34,7 +34,7 @@ export function WithNavbar({ children }: NavbarProps) {
 
   return (
     <div className="container flex flex-col gap-x-12 py-4 lg:flex-row-reverse lg:py-6">
-      <main className="min-h-screen flex-1 pb-12 lg:pb-0">{children}</main>
+      <main className="flex-1 pb-12 lg:pb-0">{children}</main>
 
       <div
         className={cn(
@@ -57,10 +57,10 @@ export function WithNavbar({ children }: NavbarProps) {
                   variant: "ghost",
                   className: cn(
                     "flex h-auto flex-1 flex-col gap-y-1 text-xs focus-within:bg-none hover:bg-transparent",
-                    "bg-none lg:w-full lg:flex-row lg:justify-stretch lg:gap-x-2 lg:text-base lg:hover:bg-secondary/60",
+                    "lg:w-full lg:flex-row lg:justify-stretch lg:gap-x-2 lg:text-base",
                     pathname === href
-                      ? "text-foreground lg:bg-secondary"
-                      : "text-foreground/60"
+                      ? "text-foreground lg:bg-secondary lg:hover:bg-secondary"
+                      : "text-foreground/60 lg:hover:bg-secondary/60"
                   ),
                 })}
               >
