@@ -11,7 +11,8 @@
     "preinstall": "npx only-allow pnpm",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
-    "check": "pnpm lint"
+    "check": "pnpm lint",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.0.4",
@@ -28,6 +29,7 @@
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.1.1",
+    "@playwright/test": "^1.40.1",
     "@tailwindcss/typography": "^0.5.10",
     "@types/eslint": "^8.44.9",
     "@types/node": "^20.10.0",
