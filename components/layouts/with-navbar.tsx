@@ -34,12 +34,12 @@ export function WithNavbar({ children }: NavbarProps) {
 
   return (
     <div className="container flex flex-col gap-x-12 py-4 lg:flex-row-reverse lg:py-6">
-      <main className="h-[3000px] flex-1 pb-12 lg:pb-0">{children}</main>
+      <main className="min-h-screen flex-1 pb-12 lg:pb-0">{children}</main>
 
       <div
         className={cn(
           "fixed inset-x-0 bottom-0 w-full bg-background shadow-extend-y-top",
-          "lg:sticky lg:h-screen lg:w-60 lg:space-y-6 lg:shadow-none"
+          "lg:sticky lg:top-6 lg:h-full lg:w-60 lg:space-y-6 lg:shadow-none"
         )}
       >
         <h2 className="mb-2 hidden px-4 text-lg font-semibold tracking-tight lg:block">
