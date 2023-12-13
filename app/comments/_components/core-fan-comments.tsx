@@ -65,10 +65,10 @@ export default function CoreFanComments({ tabValue }: CoreFanCommentsProps) {
             className={buttonVariants({
               variant: "ghost",
               size: "sm",
-              className: "w-fit hover:bg-blue-50",
+              className: "w-fit hover:bg-yt-blue-2",
             })}
           >
-            <span className="text-sm text-blue-400">{3}件の返信を表示</span>
+            <span className="text-sm text-yt-blue-8">{3}件の返信を表示</span>
           </Link>
         </div>
       </div>
