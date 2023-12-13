@@ -148,4 +148,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install
+
       - run: pnpm test:e2e
