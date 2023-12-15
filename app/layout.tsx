@@ -1,13 +1,11 @@
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-
 import "./globals.css"
 
 import { type PropsWithChildren } from "react"
+import type { Metadata } from "next"
+import { Inter } from "next/font/google"
 
 import { cn } from "@/lib/utils"
-import { BottomNavbar } from "@/components/layouts/bottom-navbar"
-import { SideNavbar } from "@/components/layouts/side-navbar"
+import { WithNavbar } from "@/components/layouts/with-navbar"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -20,11 +18,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="ja">
       <body className={cn(inter.className)}>
-        <div className="container flex py-4 lg:py-6">
-          <SideNavbar className="hidden max-w-[240px] lg:block" />
-          <main className="flex-1 pb-12 lg:pb-0">{children}</main>
-        </div>
-        <BottomNavbar className="flex lg:hidden" />
+        <WithNavbar>{children}</WithNavbar>
       </body>
     </html>
   )
