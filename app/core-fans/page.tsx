@@ -52,8 +52,10 @@ function CommentRankingItem({
   commentNum: number
 }) {
   return (
-    <div className="flex items-center gap-1">
-      <span className="w-8 text-2xl font-bold">{rank}</span>
+    <div className="flex items-center gap-3">
+      <span className="min-w-[32px] text-right text-2xl font-bold tabular-nums">
+        {rank}
+      </span>
       <div className="flex flex-1 items-center gap-2">
         <Avatar className="h-14 w-14">
           <AvatarImage src={image} />
