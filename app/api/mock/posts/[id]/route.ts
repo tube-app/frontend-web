@@ -1,3 +1,5 @@
+import { type NextRequest } from "next/server"
+
 import { fetcher } from "@/lib/utils"
 
 type Post = {
@@ -7,8 +9,9 @@ type Post = {
   body: string
 }
 
-export async function GET({ params }: { params: { id: string } }) {
-  const id = params.id
+export async function GET(req: NextRequest) {
+  const { searchParams } = req.nextUrl
+  const id = searchParams.get("id")
 
   const posts: Post[] = await fetcher<Post[]>({
     url: "http://localhost:3000/api/mock/posts",
