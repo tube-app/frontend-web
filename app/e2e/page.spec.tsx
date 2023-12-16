@@ -3,7 +3,7 @@ import { expect, test } from "next/experimental/testmode/playwright"
 // Test for successful data rendering
 test("/e2e/page.tsx - successful data rendering", async ({ page, next }) => {
   next.onFetch((request) => {
-    if (request.url === "https://jsonplaceholder.typicode.com/posts/1") {
+    if (request.url === "http://localhost:3000/api/mock/posts/1") {
       return new Response(
         JSON.stringify({
           userId: 1,

@@ -9,7 +9,7 @@ type Post = {
 
 export default async function Home() {
   const post = await fetcher<Post>({
-    url: "https://jsonplaceholder.typicode.com/posts/1",
+    url: "http://localhost:3000/api/mock/posts/1",
   })
 
   return (
