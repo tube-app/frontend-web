@@ -1,4 +1,7 @@
 import { defineConfig } from "next/experimental/testmode/playwright"
+import dotenv from "dotenv"
+
+dotenv.config()
 
 export default defineConfig({
   webServer: {

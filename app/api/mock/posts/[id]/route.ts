@@ -1,4 +1,5 @@
 import { type NextRequest } from "next/server"
+import { env } from "@/env.mjs"
 
 import { fetcher } from "@/lib/utils"
 
@@ -14,7 +15,7 @@ export async function GET(req: NextRequest) {
   const id = searchParams.get("id")
 
   const posts: Post[] = await fetcher<Post[]>({
-    url: "http://localhost:3000/api/mock/posts",
+    url: `${env.API_ENDPOINT}/mock/posts`,
   })
 
   const post = posts.find((post) => post.id === Number(id))

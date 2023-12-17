@@ -1,3 +1,5 @@
+import { env } from "@/env.mjs"
+
 import { fetcher } from "@/lib/utils"
 
 type Post = {
@@ -9,7 +11,7 @@ type Post = {
 
 export default async function Home() {
   const post = await fetcher<Post>({
-    url: "http://localhost:3000/api/mock/posts/1",
+    url: `${env.API_ENDPOINT}/mock/posts/1`,
   })
 
   return (
