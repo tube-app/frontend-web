@@ -3,7 +3,7 @@
 1. リポジトリをクローン
 
 ```bash
-git clone
+git clone https://github.com/tube-app/frontend-web.git
 ```
 
 2. pnpmを使用して依存関係をインストール
