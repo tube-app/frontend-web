@@ -2,12 +2,8 @@ import "./globals.css"
 
 import { type PropsWithChildren } from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
 
-import { cn } from "@/lib/utils"
 import { WithNavbar } from "@/components/layouts/with-navbar"
-
-const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,7 +13,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="ja">
-      <body className={cn(inter.className)}>
+      <body>
         <WithNavbar>{children}</WithNavbar>
       </body>
     </html>

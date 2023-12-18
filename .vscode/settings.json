@@ -4,8 +4,10 @@
     "clsx",
     "ianvs",
     "lucide",
+    "nextjs",
     "preinstall",
     "tailwindcss",
+    "testmode",
     "trivago"
   ],
   "tailwindCSS.includeLanguages": {
