@@ -5,8 +5,10 @@
     "ianvs",
     "lucide",
     "preinstall",
+    "shadcn",
     "tailwindcss",
-    "trivago"
+    "trivago",
+    "usequerystate"
   ],
   "tailwindCSS.includeLanguages": {
     "plaintext": "html"

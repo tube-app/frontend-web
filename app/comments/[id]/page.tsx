@@ -7,6 +7,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { ChildComments } from "@/components/child-comments"
 import { CommentSkeleton } from "@/components/skeletons/comment-skeleton"
 
+import { isTabValue, type TabValue } from "../_components/types"
+
 interface CommentDetailsPageProps {
   params: {
     id: string
@@ -21,7 +23,9 @@ export default function CommentDetailsPage({
   params,
   searchParams,
 }: CommentDetailsPageProps) {
-  const tab = searchParams.tab as string
+  const tabValue: TabValue = isTabValue(searchParams.tab)
+    ? searchParams.tab
+    : "core-fan"
 
   const isHeart = false
 
@@ -29,7 +33,7 @@ export default function CommentDetailsPage({
     <div className="grid h-full gap-2">
       <div className="flex items-center gap-2">
         <Link
-          href={`/comments?tab=${tab}`}
+          href={`/comments?tab=${tabValue}`}
           className="rounded-md hover:bg-accent hover:text-accent-foreground"
         >
           <ChevronLeft size={24} />
