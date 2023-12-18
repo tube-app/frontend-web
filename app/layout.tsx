@@ -1,14 +1,9 @@
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-
 import "./globals.css"
 
 import { type PropsWithChildren } from "react"
+import type { Metadata } from "next"
 
-import { cn } from "@/lib/utils"
-import { Sidebar } from "@/components/layouts/sidebar"
-
-const inter = Inter({ subsets: ["latin"] })
+import { WithNavbar } from "@/components/layouts/with-navbar"
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,9 +13,8 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="ja">
-      <body className={cn(inter.className, "container flex")}>
-        <Sidebar className="hidden max-w-[240px] lg:block" />
-        <main className="flex-1">{children}</main>
+      <body>
+        <WithNavbar>{children}</WithNavbar>
       </body>
     </html>
   )

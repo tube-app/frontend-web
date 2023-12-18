@@ -4,11 +4,14 @@
     "clsx",
     "ianvs",
     "lucide",
+    "nextjs",
     "preinstall",
     "shadcn",
     "tailwindcss",
     "trivago",
-    "usequerystate"
+    "usequerystate",
+    "testmode",
+    "trivago"
   ],
   "tailwindCSS.includeLanguages": {
     "plaintext": "html"
@@ -25,6 +28,8 @@
     "typescript",
     "typescriptreact"
   ],
+  "editor.codeActionsOnSave": ["source.fixAll.eslint"],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.quickSuggestions": { "strings": "on" }
 }
