@@ -1,6 +1,6 @@
 import { type ReactNode } from "react"
 
-import { BudgeButton } from "./budge-button"
+import { BadgeButton } from "./badge-button"
 
 interface WithTabProps {
   children: ReactNode
@@ -12,9 +12,9 @@ export function WithTab({ children }: WithTabProps) {
       <h1 className="text-2xl font-bold">コメント一覧</h1>
 
       <div className="flex gap-x-2">
-        <BudgeButton value="core-fan">コアファンユーザー</BudgeButton>
-        <BudgeButton value="first">初回のコメント</BudgeButton>
-        <BudgeButton value="reply">返信済みのコメント</BudgeButton>
+        <BadgeButton value="core-fan">コアファンユーザー</BadgeButton>
+        <BadgeButton value="first">初回のコメント</BadgeButton>
+        <BadgeButton value="reply">返信済みのコメント</BadgeButton>
       </div>
 
       <div>{children}</div>

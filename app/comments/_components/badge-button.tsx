@@ -5,18 +5,19 @@ import { useQueryState } from "next-usequerystate"
 import { cn } from "@/lib/utils"
 import { Badge, type BadgeProps } from "@/components/ui/badge"
 
-import { type TabValue } from "./types"
+import { isTabValue, type TabValue } from "./types"
 
-interface BudgeButtonProps extends BadgeProps {
+interface BadgeButtonProps extends BadgeProps {
   value: TabValue
 }
 
-export function BudgeButton({ value, className, ...rest }: BudgeButtonProps) {
+export function BadgeButton({ value, className, ...rest }: BadgeButtonProps) {
   const [tab, setTab] = useQueryState("tab", {
     history: "push",
     shallow: false,
   })
-  const isActive = tab === value
+  const tabValue: TabValue = isTabValue(tab) ? tab : "core-fan"
+  const isActive = tabValue === value
 
   return (
     <button
