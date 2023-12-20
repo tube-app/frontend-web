@@ -5,13 +5,13 @@
     "ianvs",
     "lucide",
     "nextjs",
+    "nums",
     "preinstall",
     "shadcn",
     "tailwindcss",
-    "trivago",
-    "usequerystate",
     "testmode",
-    "trivago"
+    "trivago",
+    "usequerystate"
   ],
   "tailwindCSS.includeLanguages": {
     "plaintext": "html"
