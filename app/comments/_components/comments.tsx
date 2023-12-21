@@ -69,18 +69,20 @@ export async function Comments({ tabValue }: CommentsProps) {
                 {/* TODO: アイコンを押下して、コメントに対する操作を行う */}
                 <MoreVertical size={16} />
               </div>
-              <Link
-                href={`/comments/${thread.id}?tab=${tabValue}`}
-                className={buttonVariants({
-                  variant: "ghost",
-                  size: "sm",
-                  className: "w-fit hover:bg-yt-blue-2",
-                })}
-              >
-                <span className="text-sm tabular-nums text-yt-blue-8">
-                  {thread.replies?.comments.length} 件の返信を表示
-                </span>
-              </Link>
+              {thread.replies && (
+                <Link
+                  href={`/comments/${thread.id}?tab=${tabValue}`}
+                  className={buttonVariants({
+                    variant: "ghost",
+                    size: "sm",
+                    className: "w-fit hover:bg-yt-blue-2",
+                  })}
+                >
+                  <span className="text-sm tabular-nums text-yt-blue-8">
+                    {thread.replies.comments.length}件の返信を表示
+                  </span>
+                </Link>
+              )}
             </div>
           </div>
         </div>

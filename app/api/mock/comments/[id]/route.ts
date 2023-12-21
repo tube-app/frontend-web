@@ -1,4 +1,3 @@
-import { type NextRequest } from "next/server"
 import { env } from "@/env.mjs"
 
 import { type CommentThread } from "@/types/api/comment-thread"

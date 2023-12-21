@@ -1,10 +1,10 @@
 import React from "react"
 import Link from "next/link"
 import { env } from "@/env.mjs"
+import { type SearchParamProps } from "@/types"
 import { ChevronLeft, Heart, MoreVertical, ThumbsUp } from "lucide-react"
 
 import { type CommentThread } from "@/types/api/comment-thread"
-import { type SearchParamProps } from "@/types/index"
 import { cn, fetcher } from "@/lib/utils"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
