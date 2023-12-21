@@ -2,12 +2,14 @@ import { type NextRequest } from "next/server"
 import { env } from "@/env.mjs"
 
 import { type CommentThread } from "@/types/api/comment-thread"
-import { fetcher } from "@/lib/utils"
+import { fetcher, sleep } from "@/lib/utils"
 
 export async function GET(
   request: Request,
   { params: { id } }: { params: { id: string } }
 ) {
+  await sleep()
+
   const url = new URL(request.url)
   const searchParams = new URLSearchParams(url.search)
   const tab = searchParams.get("tab")

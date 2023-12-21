@@ -38,3 +38,11 @@ export async function fetcher<T>({
 
   return response.json() as Promise<T>
 }
+
+export const sleep = async (waitSeconds: number = 1) => {
+  await new Promise<void>((resolve) => {
+    setTimeout(() => {
+      resolve()
+    }, waitSeconds * 1000)
+  })
+}

@@ -1,6 +1,9 @@
 import { type CommentThread } from "@/types/api/comment-thread"
+import { sleep } from "@/lib/utils"
 
-export function GET(request: Request) {
+export async function GET(request: Request) {
+  await sleep()
+
   const url = new URL(request.url)
   const searchParams = new URLSearchParams(url.search)
   const tab = searchParams.get("tab")
