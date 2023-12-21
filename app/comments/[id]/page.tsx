@@ -1,4 +1,4 @@
-import React, { Suspense } from "react"
+import React from "react"
 import Link from "next/link"
 import { env } from "@/env.mjs"
 import { ChevronLeft, Heart, MoreVertical, ThumbsUp } from "lucide-react"
@@ -7,7 +7,6 @@ import { type CommentThread } from "@/types/api/comment-thread"
 import { type SearchParamProps } from "@/types/index"
 import { cn, fetcher } from "@/lib/utils"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { CommentSkeleton } from "@/components/skeletons/comment-skeleton"
 
 import { isTabValue, type TabValue } from "../_components/types"
 
@@ -63,69 +62,56 @@ export default async function CommentDetailsPage({
             </div>
             <MoreVertical size={16} />
           </div>
-          <Suspense
-            fallback={
-              <div className="grid gap-2">
-                <div className="mt-2 grid gap-2">
-                  {thread &&
-                    thread.replies &&
-                    Array.from({
-                      length: thread.replies.comments.length,
-                    }).map((_, i) => <CommentSkeleton key={i} />)}
-                </div>
-              </div>
-            }
-          >
-            <ul className="mt-2 grid gap-2">
-              {thread &&
-                thread.replies?.comments.map((comment) => {
-                  const isLike = false
 
-                  return (
-                    <li className="flex items-start space-x-4" key={comment.id}>
-                      <Avatar>
-                        <AvatarImage
-                          src={comment.snippet.authorProfileImageUrl}
-                          alt={`@${comment.snippet.authorDisplayName}`}
-                        />
-                        <AvatarFallback>
-                          {comment.snippet.authorDisplayName
-                            .slice(0, 2)
-                            .toUpperCase()}
-                        </AvatarFallback>
-                      </Avatar>
-                      <div className="grid w-full gap-1">
-                        <p className="text-sm text-muted-foreground">
-                          {comment.snippet.authorDisplayName}
-                        </p>
-                        <p className="text-sm leading-none">
-                          {comment.snippet.textDisplay}
-                        </p>
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-4">
-                            <div className="flex items-center gap-1">
-                              <ThumbsUp size={12} />
-                              <span className="text-sm">
-                                {comment.snippet.likeCount}
-                              </span>
-                            </div>
-                            <Heart
-                              size={12}
-                              className={cn(
-                                isLike
-                                  ? "text-destructive"
-                                  : "text-muted-foreground"
-                              )}
-                            />
+          <ul className="mt-2 grid gap-2">
+            {thread &&
+              thread.replies?.comments.map((comment) => {
+                const isLike = false
+
+                return (
+                  <li className="flex items-start space-x-4" key={comment.id}>
+                    <Avatar>
+                      <AvatarImage
+                        src={comment.snippet.authorProfileImageUrl}
+                        alt={`@${comment.snippet.authorDisplayName}`}
+                      />
+                      <AvatarFallback>
+                        {comment.snippet.authorDisplayName
+                          .slice(0, 2)
+                          .toUpperCase()}
+                      </AvatarFallback>
+                    </Avatar>
+                    <div className="grid w-full gap-1">
+                      <p className="text-sm text-muted-foreground">
+                        {comment.snippet.authorDisplayName}
+                      </p>
+                      <p className="text-sm leading-none">
+                        {comment.snippet.textDisplay}
+                      </p>
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-4">
+                          <div className="flex items-center gap-1">
+                            <ThumbsUp size={12} />
+                            <span className="text-sm">
+                              {comment.snippet.likeCount}
+                            </span>
                           </div>
-                          <MoreVertical size={16} />
+                          <Heart
+                            size={12}
+                            className={cn(
+                              isLike
+                                ? "text-destructive"
+                                : "text-muted-foreground"
+                            )}
+                          />
                         </div>
+                        <MoreVertical size={16} />
                       </div>
-                    </li>
-                  )
-                })}
-            </ul>
-          </Suspense>
+                    </div>
+                  </li>
+                )
+              })}
+          </ul>
         </article>
       </section>
     </div>
