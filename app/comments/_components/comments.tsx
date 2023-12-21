@@ -79,7 +79,7 @@ export async function Comments({ tabValue }: CommentsProps) {
                   })}
                 >
                   <span className="text-sm tabular-nums text-yt-blue-8">
-                    {thread.replies.comments.length}件の返信を表示
+                    {thread.replies.comments.length} 件の返信を表示
                   </span>
                 </Link>
               )}
