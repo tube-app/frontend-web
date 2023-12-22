@@ -1,0 +1,26 @@
+{
+  "Route with sleep function": {
+    "prefix": "rsleep",
+    "body": [
+      "import { env } from '@/env.mjs'",
+      "import { fetcher, sleep } from '@/lib/utils'",
+      "",
+      "export async function GET(request: Request) {",
+      "  await sleep()",
+      "",
+      "  const data = await fetcher<T>({",
+      "    url: `${env.API_ENDPOINT}/mock/your_endpoint`,",
+      "  })",
+      "",
+      "  if (!data) {",
+      "    return new Response(null, { status: 404 })",
+      "  }",
+      "",
+      "  return new Response(JSON.stringify(data), {",
+      "    headers: { 'Content-Type': 'application/json' },",
+      "  })",
+      "}"
+    ],
+    "description": "Creates a GET route with a sleep function call and generic fetcher"
+  }
+}
