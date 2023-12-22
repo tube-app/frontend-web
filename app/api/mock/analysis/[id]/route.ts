@@ -1,9 +1,14 @@
-import { type Analysis } from "@/app/page"
+import { type Analysis } from "@/types/api/analysis"
+import { sleep } from "@/lib/utils"
 
-export function GET(request: Request, { params }: { params: { id: string } }) {
+export async function GET(
+  _request: Request,
+  { params }: { params: { id: string } }
+) {
+  await sleep()
   const id = params.id
 
-  const data = [
+  const data: Analysis[] = [
     {
       id: "c7d091db-8b2b-4b62-a71f-0a13b6a42c1a",
       subscribers: 118000,
@@ -28,7 +33,7 @@ export function GET(request: Request, { params }: { params: { id: string } }) {
       likeCurrentMonth: 200,
       likePrevMonth: 180,
     },
-  ] satisfies Analysis[]
+  ]
 
   const res = data.find((item) => item.id === id)
 
