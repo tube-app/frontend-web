@@ -12,8 +12,8 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { AnalyticsCardSkeleton } from "@/components/skeletons/analytics-card-skeleton"
 import { ChannelStatsSkeleton } from "@/components/skeletons/channel-stats-skeleton"
+import { KeyIndicatorSkeleton } from "@/components/skeletons/key-indicator-skeleton"
 
 export const metadata: Metadata = {
   title: "分析画面",
@@ -26,7 +26,7 @@ export default function AnalysisPage() {
 
   return (
     <div className="flex flex-col gap-10">
-      <Suspense fallback={<ChannelStatsSkeleton />}>
+      <Suspense key={token} fallback={<ChannelStatsSkeleton />}>
         <ChannelStats token={token} />
       </Suspense>
       <div className="flex flex-col gap-2">
@@ -34,11 +34,8 @@ export default function AnalysisPage() {
           <p className="text-2xl font-bold">重要指標</p>
           <p className="text-sm text-muted-foreground">過去28日間</p>
         </div>
-        <Suspense fallback={<AnalyticsCardSkeleton />}>
-          <AnalyticsCard token={token} title="1動画当たりのコメント数" />
-        </Suspense>
-        <Suspense fallback={<AnalyticsCardSkeleton />}>
-          <AnalyticsCard token={token} title="1動画当たりの高評価数" />
+        <Suspense key={token} fallback={<KeyIndicatorSkeleton />}>
+          <KeyIndicator token={token} />
         </Suspense>
       </div>
       <div>
@@ -71,22 +68,37 @@ async function ChannelStats({ token }: { token: string }) {
   )
 }
 
-async function AnalyticsCard({
-  token,
-  title,
-}: {
-  token: string
-  title: string
-}) {
+async function KeyIndicator({ token }: { token: string }) {
   const { analytics } = await fetcher<Analysis>({
     url: `${env.API_ENDPOINT}/mock/analysis`,
     headers: { token: token },
   })
-
-  const rowPercentage = computeMonthOverMonthChangeRate(
-    analytics.commentCurrentMonth,
-    analytics.commentPrevMonth
+  return (
+    <div className="flex flex-col gap-2">
+      <AnalyticsCard
+        title="1動画当たりのコメント数"
+        currentNum={analytics.commentCurrentMonth}
+        prevNum={analytics.commentPrevMonth}
+      />
+      <AnalyticsCard
+        title="1動画当たりの高評価数"
+        currentNum={analytics.likeCurrentMonth}
+        prevNum={analytics.likePrevMonth}
+      />
+    </div>
   )
+}
+
+async function AnalyticsCard({
+  title,
+  currentNum,
+  prevNum,
+}: {
+  title: string
+  currentNum: number
+  prevNum: number
+}) {
+  const rowPercentage = computeMonthOverMonthChangeRate(currentNum, prevNum)
   const isPlus = rowPercentage > 0 ? true : false
 
   return (
@@ -96,14 +108,10 @@ async function AnalyticsCard({
       </CardHeader>
       <CardContent className="flex items-center justify-between p-0">
         <div className="flex items-baseline gap-2">
-          <p className="text-4xl font-bold">
-            {analytics.likeCurrentMonth.toString()}
-          </p>
+          <p className="text-4xl font-bold">{currentNum.toString()}</p>
           <div className="flex">
             <p className="text-muted-foreground">前月</p>
-            <p className="text-muted-foreground">
-              {analytics.likePrevMonth.toString()}
-            </p>
+            <p className="text-muted-foreground">{prevNum.toString()}</p>
           </div>
         </div>
         {rowPercentage !== 0 ? (
