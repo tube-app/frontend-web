@@ -1,10 +1,10 @@
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card"
+import { Card, CardContent, CardHeader } from "../ui/card"
 import { Skeleton } from "../ui/skeleton"
 
 export function KeyIndicatorSkeleton() {
   return (
     <div className="flex flex-col gap-2">
-      <Card className="gap-2 px-3 py-2 space-y-1">
+      <Card className="gap-2 space-y-1 px-3 py-2">
         <CardHeader className="p-0">
           <Skeleton className="h-5 w-48" />
         </CardHeader>
@@ -19,7 +19,7 @@ export function KeyIndicatorSkeleton() {
         </CardContent>
       </Card>
 
-      <Card className="gap-2 px-3 py-2 space-y-1">
+      <Card className="gap-2 space-y-1 px-3 py-2">
         <CardHeader className="p-0">
           <Skeleton className="h-5 w-48" />
         </CardHeader>

@@ -47,6 +47,7 @@ test("/analysis page - successful data rendering", async ({ page, next }) => {
           likePrevMonth: 1234,
         },
       }
+
       return new Response(JSON.stringify(res), {
         headers: { "Content-Type": "application/json" },
       })
