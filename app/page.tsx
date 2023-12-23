@@ -108,10 +108,14 @@ async function AnalyticsCard({
       </CardHeader>
       <CardContent className="flex items-center justify-between p-0">
         <div className="flex items-baseline gap-2">
-          <p className="text-4xl font-bold">{currentNum.toString()}</p>
+          <p className="text-4xl font-bold" data-testid="current-num">
+            {currentNum.toString()}
+          </p>
           <div className="flex">
             <p className="text-muted-foreground">前月</p>
-            <p className="text-muted-foreground">{prevNum.toString()}</p>
+            <p className="text-muted-foreground" data-testid="prev-num">
+              {prevNum.toString()}
+            </p>
           </div>
         </div>
         {rowPercentage !== 0 ? (
@@ -120,7 +124,7 @@ async function AnalyticsCard({
             className="flex items-center justify-center gap-1 text-sm"
           >
             {isPlus ? <ArrowUpRight /> : <ArrowDownRight />}
-            <span>
+            <span data-testid="row-percentage">
               {`${getAbsoluteValueRoundedToOneDecimal(rowPercentage)}%`}
             </span>
           </Badge>
