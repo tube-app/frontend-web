@@ -3,7 +3,6 @@ import { env } from "@/env.mjs"
 
 import { type Analysis } from "@/types/api/analysis"
 import { type User } from "@/types/api/user"
-import { computeMonthOverMonthChangeRate } from "@/lib/utils"
 
 test("/analysis page - successful data rendering", async ({ page, next }) => {
   next.onFetch((request) => {
