@@ -4,7 +4,6 @@ import { env } from "@/env.mjs"
 import { ArrowDownRight, ArrowUpRight } from "lucide-react"
 
 import { type Analysis } from "@/types/api/analysis"
-import { type User } from "@/types/api/user"
 import {
   computeMonthOverMonthChangeRate,
   fetcher,
@@ -50,13 +49,9 @@ export default function AnalysisPage() {
 }
 
 async function ChannelStats({ token }: { token: string }) {
-  const user = await fetcher<User>({
-    url: `${env.API_ENDPOINT}/mock/user`,
+  const { user, analytics } = await fetcher<Analysis>({
+    url: `${env.API_ENDPOINT}/mock/analysis`,
     headers: { token: token },
-  })
-
-  const analytics = await fetcher<Analysis>({
-    url: `${env.API_ENDPOINT}/mock/analysis/${user.id}`,
   })
 
   return (
@@ -83,14 +78,11 @@ async function AnalyticsCard({
   token: string
   title: string
 }) {
-  const user = await fetcher<User>({
-    url: `${env.API_ENDPOINT}/mock/user`,
+  const { analytics } = await fetcher<Analysis>({
+    url: `${env.API_ENDPOINT}/mock/analysis`,
     headers: { token: token },
   })
 
-  const analytics = await fetcher<Analysis>({
-    url: `${env.API_ENDPOINT}/mock/analysis/${user.id}`,
-  })
   const rowPercentage = computeMonthOverMonthChangeRate(
     analytics.commentCurrentMonth,
     analytics.commentPrevMonth
