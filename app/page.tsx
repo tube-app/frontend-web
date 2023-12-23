@@ -73,6 +73,7 @@ async function KeyIndicator({ token }: { token: string }) {
     url: `${env.API_ENDPOINT}/mock/analysis`,
     headers: { token: token },
   })
+
   return (
     <div className="flex flex-col gap-2">
       <AnalyticsCard
@@ -89,7 +90,7 @@ async function KeyIndicator({ token }: { token: string }) {
   )
 }
 
-async function AnalyticsCard({
+function AnalyticsCard({
   title,
   currentNum,
   prevNum,
