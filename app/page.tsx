@@ -73,20 +73,31 @@ async function KeyIndicator({ token }: { token: string }) {
     url: `${env.API_ENDPOINT}/mock/analysis`,
     headers: { token: token },
   })
+  const indicators = [
+    {
+      title: "1動画当たりのコメント数",
+      currentNum: analytics.currentMonth.comment,
+      prevNum: analytics.prevMonth.comment,
+    },
+    {
+      title: "1動画当たりの高評価数",
+      currentNum: analytics.currentMonth.like,
+      prevNum: analytics.prevMonth.like,
+    },
+  ]
 
   return (
-    <div className="flex flex-col gap-2">
-      <AnalyticsCard
-        title="1動画当たりのコメント数"
-        currentNum={analytics.commentCurrentMonth}
-        prevNum={analytics.commentPrevMonth}
-      />
-      <AnalyticsCard
-        title="1動画当たりの高評価数"
-        currentNum={analytics.likeCurrentMonth}
-        prevNum={analytics.likePrevMonth}
-      />
-    </div>
+    <ul className="flex flex-col gap-2">
+      {indicators.map((indicator) => (
+        <li key={indicator.title}>
+          <AnalyticsCard
+            title={indicator.title}
+            currentNum={indicator.currentNum}
+            prevNum={indicator.prevNum}
+          />
+        </li>
+      ))}
+    </ul>
   )
 }
 
