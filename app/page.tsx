@@ -26,7 +26,7 @@ export default function AnalysisPage() {
 
   return (
     <div className="flex flex-col gap-10">
-      <Suspense key={token} fallback={<ChannelStatsSkeleton />}>
+      <Suspense fallback={<ChannelStatsSkeleton />}>
         <ChannelStats token={token} />
       </Suspense>
       <div className="flex flex-col gap-2">
@@ -34,7 +34,7 @@ export default function AnalysisPage() {
           <p className="text-2xl font-bold">重要指標</p>
           <p className="text-sm text-muted-foreground">過去28日間</p>
         </div>
-        <Suspense key={token} fallback={<KeyIndicatorSkeleton />}>
+        <Suspense fallback={<KeyIndicatorSkeleton count={2} />}>
           <KeyIndicator token={token} />
         </Suspense>
       </div>
