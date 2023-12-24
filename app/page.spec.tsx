@@ -40,10 +40,8 @@ test("/analysis page - successful data rendering", async ({ page, next }) => {
         analytics: {
           id: "c7d091db-8b2b-4b62-a71f-0a13b6a42c1a",
           subscribers: 118000,
-          commentCurrentMonth: 123,
-          commentPrevMonth: 92,
-          likeCurrentMonth: 804,
-          likePrevMonth: 1234,
+          currentMonth: { comment: 123, like: 804 },
+          prevMonth: { comment: 92, like: 1234 },
         },
       }
 

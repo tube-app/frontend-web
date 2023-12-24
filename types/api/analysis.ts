@@ -1,12 +1,15 @@
 import { type User } from "./user"
 
+type MonthData = {
+  comment: number
+  like: number
+}
+
 export type Analytics = {
   id: string
   subscribers: number
-  commentCurrentMonth: number
-  commentPrevMonth: number
-  likeCurrentMonth: number
-  likePrevMonth: number
+  currentMonth: MonthData
+  prevMonth: MonthData
 }
 
 export type Analysis = {
