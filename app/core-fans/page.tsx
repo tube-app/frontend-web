@@ -21,8 +21,7 @@ export default function CoreFansPage() {
       <ul className="flex flex-col gap-3">
         {commentRankingList.map((item, index) => (
           <li key={item.id}>
-            {/* TODO: コアファンのコメントページのパスを指定 */}
-            <Link href={`/core-fans?id=${item.id}`}>
+            <Link href={`/core-fans/${item.id}`}>
               <CommentRankingItem
                 rank={index + 1}
                 name={item.name}
