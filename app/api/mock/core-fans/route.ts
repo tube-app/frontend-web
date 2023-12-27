@@ -1,9 +1,10 @@
+import { type CoreFans } from "@/types/api/core-fans"
 import { sleep } from "@/lib/utils"
 
 export async function GET() {
   await sleep()
 
-  const data = [
+  const data: CoreFans[] = [
     {
       name: "いかついやーつ",
       id: "jfdijafjiodsjfdsa",
