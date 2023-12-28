@@ -1,11 +1,15 @@
 import { defineConfig } from "next/experimental/testmode/playwright"
-import dotenv from "dotenv"
 
-dotenv.config()
+const PORT = process.env.PORT || 3000
+
+const baseURL = `http://localhost:${PORT}`
 
 export default defineConfig({
   webServer: {
     command: "pnpm dev --experimental-test-proxy",
-    url: "http://localhost:3000",
+    url: baseURL,
+  },
+  use: {
+    baseURL,
   },
 })
