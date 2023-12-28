@@ -37,7 +37,7 @@ export default function CoreFansPage() {
 async function CoreFansList({ token }: { token: string }) {
   const coreFans = await fetcher<CoreFans[]>({
     url: `${env.API_ENDPOINT}/mock/core-fans`,
-    headers: { token: token },
+    headers: { token },
   })
 
   return (
