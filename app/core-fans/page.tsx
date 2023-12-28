@@ -58,10 +58,7 @@ async function CoreFansList({ token }: { token: string }) {
                 </Avatar>
                 <div className="flex flex-col">
                   <span>{coreFan.name}</span>
-                  <span
-                    className="text-xs text-muted-foreground"
-                    data-testid="coreFan-id"
-                  >{`@${coreFan.id}`}</span>
+                  <span className="text-xs text-muted-foreground">{`@${coreFan.id}`}</span>
                 </div>
               </div>
               <span className="text-xl">{coreFan.commentNum}</span>

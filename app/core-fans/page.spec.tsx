@@ -38,8 +38,6 @@ const data: CoreFans[] = [
 test("/core-fans page - successful data rendering", async ({ page, next }) => {
   next.onFetch((request) => {
     if (request.url === `${env.API_ENDPOINT}/mock/core-fans`) {
-      const token = request.headers.get("token")
-
       if (!data) {
         return new Response(null, { status: 404 })
       }
@@ -58,9 +56,13 @@ test("/core-fans page - successful data rendering", async ({ page, next }) => {
 
   await expect(page.getByRole("listitem")).toHaveCount(5)
 
-  const coreFanIds = await page.locator('[data-testid="coreFan-id"]').all()
-  for (let i = 0; i < coreFanIds.length; i++) {
-    const coreFanId = await coreFanIds[i]?.textContent()
-    expect(coreFanId).toBe(`@${data[i]?.id}`)
+  const listItem = await page.getByRole("listitem").all()
+
+  for (let i = 0; i < listItem.length; i++) {
+    const item = await listItem[i]?.textContent()
+    expect(item).toBe(
+      `${i + 1}${data[i]?.name.slice(0, 2).toUpperCase()}${data[i]
+        ?.name}@${data[i]?.id}${data[i]?.commentNum}`
+    )
   }
 })
