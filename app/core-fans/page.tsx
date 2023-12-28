@@ -43,7 +43,7 @@ async function CoreFansList({ token }: { token: string }) {
   return (
     <ul className="flex flex-col gap-3">
       {coreFans.map((coreFan, index) => (
-        <li key={coreFan.id}>
+        <li key={coreFan.id} className="rounded-md hover:bg-accent">
           <Link href={`/core-fans/${coreFan.id}`}>
             <div className="flex items-center gap-3">
               <span className="min-w-[32px] text-right text-2xl font-bold tabular-nums">
