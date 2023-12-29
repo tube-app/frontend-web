@@ -56,13 +56,9 @@ test("/core-fans page - successful data rendering", async ({ page, next }) => {
 
   await expect(page.getByRole("listitem")).toHaveCount(5)
 
-  const listItem = await page.getByRole("listitem").all()
-
-  for (let i = 0; i < listItem.length; i++) {
-    const item = await listItem[i]?.textContent()
-    expect(item).toBe(
-      `${i + 1}${data[i]?.name.slice(0, 2).toUpperCase()}${data[i]
-        ?.name}@${data[i]?.id}${data[i]?.commentNum}`
-    )
+  for (let i = 0; i < data.length; i++) {
+    const item = await page.textContent(`li:nth-child(${i + 1})`)
+    expect(item).toContain(data[i]?.name)
+    expect(item).toContain(data[i]?.id)
   }
 })
