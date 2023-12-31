@@ -9,6 +9,7 @@ const config = {
     "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended-type-checked",
     "plugin:tailwindcss/recommended",
+    "plugin:storybook/recommended",
     "prettier",
   ],
   rules: {
