@@ -1,12 +1,10 @@
-import { env } from "process"
-
 import { type Analysis } from "@/types/api/analysis"
 import { fetcher } from "@/lib/utils"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 export async function ChannelStats({ token }: { token: string }) {
   const { user, analytics } = await fetcher<Analysis>({
-    url: `${env.API_ENDPOINT}/mock/analysis`,
+    url: `http://localhost:3000/api/mock/analysis`,
     headers: { token: token },
   })
 
