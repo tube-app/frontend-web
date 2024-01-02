@@ -3,7 +3,7 @@ import { env } from "@/env.mjs"
 
 test("/e2e/page.tsx - successful data rendering", async ({ page, next }) => {
   next.onFetch((request) => {
-    if (request.url === `${env.API_ENDPOINT}/mock/posts/1`) {
+    if (request.url === `${env.NEXT_PUBLIC_API_ENDPOINT}/mock/posts/1`) {
       return new Response(
         JSON.stringify({
           userId: 1,

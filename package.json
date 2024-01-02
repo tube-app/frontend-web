@@ -12,7 +12,7 @@
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
     "check": "pnpm lint",
-    "test:e2e": "API_ENDPOINT=http://localhost:3000/api playwright test",
+    "test:e2e": "NEXT_PUBLIC_API_ENDPOINT=http://localhost:3000/api playwright test",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },

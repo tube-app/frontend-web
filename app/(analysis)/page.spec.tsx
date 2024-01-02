@@ -6,7 +6,7 @@ import { type User } from "@/types/api/user"
 
 test("/analysis page - successful data rendering", async ({ page, next }) => {
   next.onFetch((request) => {
-    if (request.url === `${env.API_ENDPOINT}/mock/analysis`) {
+    if (request.url === `${env.NEXT_PUBLIC_API_ENDPOINT}/mock/analysis`) {
       const token = request.headers.get("token")
       const userData: User[] = [
         {

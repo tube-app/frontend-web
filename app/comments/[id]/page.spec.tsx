@@ -5,7 +5,7 @@ test("/comments/:id - successful data rendering", async ({ page, next }) => {
   next.onFetch((request) => {
     if (
       request.url ===
-      `${env.API_ENDPOINT}/mock/comments/9gy1b3V0dWJlQ34tbWVudElk?tab=core-fan`
+      `${env.NEXT_PUBLIC_API_ENDPOINT}/mock/comments/9gy1b3V0dWJlQ34tbWVudElk?tab=core-fan`
     ) {
       return new Response(
         JSON.stringify({

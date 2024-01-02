@@ -14,7 +14,7 @@ export async function GET(
   const tab = searchParams.get("tab")
 
   const threads = await fetcher<CommentThread[]>({
-    url: `${env.API_ENDPOINT}/mock/comments?tab=${tab}`,
+    url: `${env.NEXT_PUBLIC_API_ENDPOINT}/mock/comments?tab=${tab}`,
     cache: "no-store",
   })
 

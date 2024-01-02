@@ -6,7 +6,10 @@ test("/comments component - successful data rendering", async ({
   next,
 }) => {
   next.onFetch((request) => {
-    if (request.url === `${env.API_ENDPOINT}/mock/comments?tab=core-fan`) {
+    if (
+      request.url ===
+      `${env.NEXT_PUBLIC_API_ENDPOINT}/mock/comments?tab=core-fan`
+    ) {
       return new Response(
         JSON.stringify([
           {
