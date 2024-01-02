@@ -36,7 +36,7 @@ test("/analysis page - successful data rendering", async ({ page, next }) => {
       }
 
       const res: Analysis = {
-        user: user,
+        user,
         analytics: {
           id: "c7d091db-8b2b-4b62-a71f-0a13b6a42c1a",
           subscribers: 118000,

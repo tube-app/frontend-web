@@ -78,8 +78,8 @@ export async function GET(request: Request) {
   }
 
   const res: Analysis = {
-    user: user,
-    analytics: analytics,
+    user,
+    analytics,
   }
 
   return new Response(JSON.stringify(res), {
