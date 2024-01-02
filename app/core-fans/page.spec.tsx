@@ -37,7 +37,7 @@ const data: CoreFans[] = [
 ]
 test("/core-fans page - successful data rendering", async ({ page, next }) => {
   next.onFetch((request) => {
-    if (request.url === `${env.API_ENDPOINT}/mock/core-fans`) {
+    if (request.url === `${env.NEXT_PUBLIC_API_ENDPOINT}/mock/core-fans`) {
       if (!data) {
         return new Response(null, { status: 404 })
       }
