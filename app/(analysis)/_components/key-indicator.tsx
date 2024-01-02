@@ -13,7 +13,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 export async function KeyIndicator({ token }: { token: string }) {
   const { analytics } = await fetcher<Analysis>({
     url: `${env.NEXT_PUBLIC_API_ENDPOINT}/mock/analysis`,
-    headers: { token: token },
+    headers: { token },
   })
   const indicators = [
     {
