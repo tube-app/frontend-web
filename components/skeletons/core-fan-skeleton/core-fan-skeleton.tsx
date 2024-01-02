@@ -1,6 +1,6 @@
 import { ChevronRight } from "lucide-react"
 
-import { Skeleton } from "../ui/skeleton"
+import { Skeleton } from "@/components/ui/skeleton"
 
 export function CoreFanSkeleton({ rank }: { rank: number }) {
   return (
