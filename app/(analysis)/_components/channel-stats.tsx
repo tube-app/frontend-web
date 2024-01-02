@@ -7,7 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 export async function ChannelStats({ token }: { token: string }) {
   const { user, analytics } = await fetcher<Analysis>({
     url: `${env.API_ENDPOINT}/mock/analysis`,
-    headers: { token: token },
+    headers: { token },
   })
 
   return (

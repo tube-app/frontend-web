@@ -42,6 +42,7 @@ const config = {
       "error",
       { blankLine: "always", prev: "*", next: "return" },
     ],
+    "object-shorthand": ["error", "always"],
   },
   settings: {
     tailwindcss: {
