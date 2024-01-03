@@ -1,4 +1,4 @@
-import { env } from "process"
+import { env } from "@/env.mjs"
 import { ArrowDownRight, ArrowUpRight } from "lucide-react"
 
 import { type Analysis } from "@/types/api/analysis"
