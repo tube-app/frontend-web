@@ -5,7 +5,7 @@ import { BarChart, HeartHandshake, MessageCircle } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-import { NavLink } from "./nav-link"
+import { NavLink } from "../nav-link"
 
 interface NavbarProps {
   children: ReactNode
