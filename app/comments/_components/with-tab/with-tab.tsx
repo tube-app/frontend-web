@@ -1,6 +1,6 @@
 import { type ReactNode } from "react"
 
-import { BadgeButton } from "./badge-button"
+import { BadgeButton } from "../badge-button"
 
 interface WithTabProps {
   children: ReactNode

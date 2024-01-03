@@ -10,7 +10,7 @@ import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { buttonVariants } from "@/components/ui/button"
 
-import { type TabValue } from "./types"
+import { type TabValue } from "../types"
 
 interface CommentsProps {
   tabValue: TabValue

@@ -5,7 +5,7 @@ import { useQueryState } from "next-usequerystate"
 import { cn } from "@/lib/utils"
 import { Badge, type BadgeProps } from "@/components/ui/badge"
 
-import { isTabValue, type TabValue } from "./types"
+import { isTabValue, type TabValue } from "../types"
 
 interface BadgeButtonProps extends BadgeProps {
   value: TabValue
