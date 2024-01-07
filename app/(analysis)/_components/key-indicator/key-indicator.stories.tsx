@@ -3,6 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react"
 import { rest } from "msw"
 import { setupServer } from "msw/node"
 
+import { analysisData, userData } from "@/app/api/mock/analysis/data"
+
 import { KeyIndicator } from "."
 
 const server = setupServer()
@@ -32,24 +34,8 @@ export const Default: Story = {
           (_req, res, ctx) => {
             return res(
               ctx.json({
-                user: {
-                  id: "c7d091db-8b2b-4b62-a71f-0a13b6a42c1a",
-                  userId: "jfdijafjiodsjfdsa",
-                  name: "しまぶーのIT大学",
-                  image: "https://github.com/shadcn.png",
-                },
-                analytics: {
-                  id: "c7d091db-8b2b-4b62-a71f-0a13b6a42c1a",
-                  subscribers: 118000,
-                  currentMonth: {
-                    comment: 123,
-                    like: 804,
-                  },
-                  prevMonth: {
-                    comment: 92,
-                    like: 1234,
-                  },
-                },
+                user: userData,
+                analytics: analysisData,
               })
             )
           }
