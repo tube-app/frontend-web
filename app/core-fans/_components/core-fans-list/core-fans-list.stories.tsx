@@ -3,7 +3,6 @@ import type { Meta, StoryObj } from "@storybook/react"
 import { rest } from "msw"
 import { setupServer } from "msw/node"
 
-import { type CoreFans } from "@/types/api/core-fans"
 import { coreFansData } from "@/app/api/mock/core-fans/data"
 
 import { CoreFansList } from "."
