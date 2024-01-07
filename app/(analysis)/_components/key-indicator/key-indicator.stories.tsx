@@ -29,7 +29,7 @@ export const Default: Story = {
       server.use(
         rest.get(
           `${env.NEXT_PUBLIC_API_ENDPOINT}/mock/analysis`,
-          (req, res, ctx) => {
+          (_req, res, ctx) => {
             return res(
               ctx.json({
                 user: {
