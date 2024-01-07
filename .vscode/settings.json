@@ -11,7 +11,8 @@
     "tailwindcss",
     "testmode",
     "trivago",
-    "usequerystate"
+    "usequerystate",
+    "autodocs"
   ],
   "tailwindCSS.includeLanguages": {
     "plaintext": "html"
