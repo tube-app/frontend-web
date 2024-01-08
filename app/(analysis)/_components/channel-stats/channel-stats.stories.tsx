@@ -20,6 +20,9 @@ const meta = {
       return <Story />
     },
   ],
+  args: {
+    token: "c7d091db-8b2b-4b62-a71f-0a13b6a42c1a",
+  },
 } satisfies Meta<typeof ChannelStats>
 
 export default meta
@@ -31,11 +34,15 @@ export const Default: Story = {
       server.use(
         rest.get(
           `${env.NEXT_PUBLIC_API_ENDPOINT}/mock/analysis`,
-          (_req, res, ctx) => {
+          (req, res, ctx) => {
             return res(
               ctx.json({
-                user: userData,
-                analytics: analysisData,
+                user: userData.find(
+                  (user) => user.id === req.headers.get("token")
+                ),
+                analytics: analysisData.find(
+                  (analysis) => analysis.id === req.headers.get("token")
+                ),
               })
             )
           }
