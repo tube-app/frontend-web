@@ -31,7 +31,7 @@ export async function KeyIndicator({ token }: { token: string }) {
   return (
     <ul className="flex flex-col gap-2">
       {indicators.map((indicator) => (
-        <li key={indicator.title}>
+        <li key={indicator.title} aria-label={indicator.title}>
           <AnalyticsCard
             title={indicator.title}
             currentNum={indicator.currentNum}
@@ -62,14 +62,10 @@ function AnalyticsCard({
       </CardHeader>
       <CardContent className="flex items-center justify-between p-0">
         <div className="flex items-baseline gap-2">
-          <p className="text-4xl font-bold" data-testid="current-num">
-            {currentNum.toString()}
-          </p>
+          <p className="text-4xl font-bold">{currentNum.toString()}</p>
           <div className="flex">
             <p className="text-muted-foreground">前月</p>
-            <p className="text-muted-foreground" data-testid="prev-num">
-              {prevNum.toString()}
-            </p>
+            <p className="text-muted-foreground">{prevNum.toString()}</p>
           </div>
         </div>
         {rowPercentage !== 0 ? (
@@ -78,7 +74,7 @@ function AnalyticsCard({
             className="flex items-center justify-center gap-1 text-sm"
           >
             {isPlus ? <ArrowUpRight /> : <ArrowDownRight />}
-            <span data-testid="row-percentage">
+            <span>
               {`${getAbsoluteValueRoundedToOneDecimal(rowPercentage)}%`}
             </span>
           </Badge>

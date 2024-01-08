@@ -40,24 +40,15 @@ test("/analysis page - successful data rendering", async ({ page, next }) => {
   const subscribers = await page.textContent("p.text-2xl.font-bold")
   expect(subscribers).toBe("118,000")
 
-  const currentNums = await page.locator('[data-testid="current-num"]').all()
-  const commentCurrentMonth = await currentNums[0]?.textContent()
-  const likeCurrentMonth = await currentNums[1]?.textContent()
-  expect(commentCurrentMonth).toBe("123")
-  expect(likeCurrentMonth).toBe("804")
+  const comment = page.getByRole("listitem", {
+    name: "1動画当たりのコメント数",
+  })
+  await expect(comment).toContainText("123")
+  await expect(comment).toContainText("92")
+  await expect(comment).toContainText("33.7%")
 
-  const prevNums = await page.locator('[data-testid="prev-num"]').all()
-  const commentPrevMonth = await prevNums[0]?.textContent()
-  const likePrevMonth = await prevNums[1]?.textContent()
-  expect(commentPrevMonth).toBe("92")
-  expect(likePrevMonth).toBe("1234")
-
-  const rowPercentages = await page
-    .locator('[data-testid="row-percentage"]')
-    .all()
-  const commentRowPercentage = await rowPercentages[0]?.textContent()
-  const likeRowPercentage = await rowPercentages[1]?.textContent()
-
-  expect(commentRowPercentage).toBe("33.7%")
-  expect(likeRowPercentage).toBe("34.8%")
+  const like = page.getByRole("listitem", { name: "1動画当たりの高評価数" })
+  await expect(like).toContainText("804")
+  await expect(like).toContainText("1234")
+  await expect(like).toContainText("34.8%")
 })
