@@ -2,16 +2,20 @@
   "cSpell.words": [
     "callees",
     "clsx",
+    "hookform",
     "ianvs",
     "lucide",
     "nextjs",
     "nums",
     "preinstall",
     "shadcn",
+    "Signin",
     "tailwindcss",
     "testmode",
     "trivago",
-    "usequerystate"
+    "trpc",
+    "usequerystate",
+    "uuidv"
   ],
   "tailwindCSS.includeLanguages": {
     "plaintext": "html"
