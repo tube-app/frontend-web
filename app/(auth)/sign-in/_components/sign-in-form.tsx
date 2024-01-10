@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { useToast } from "@/components/ui/use-toast"
+import { Spinner } from "@/components/spinner"
 import { CardWrapper } from "@/app/(auth)/_components/card-wrapper"
 
 export function SignInForm() {
@@ -81,6 +82,9 @@ export function SignInForm() {
             )}
           />
           <Button type="submit" disabled={isPending}>
+            {isPending && (
+              <Spinner className="mr-2 animate-spin" aria-hidden="true" />
+            )}
             ログイン
           </Button>
         </form>
