@@ -32,7 +32,7 @@ export default function AnalysisPage() {
           }}
         >
           <Button variant={"ghost"} type="submit">
-            Sign Out
+            サインアウト
           </Button>
         </form>
       </div>
