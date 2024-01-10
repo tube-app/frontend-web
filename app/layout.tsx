@@ -3,7 +3,7 @@ import "./globals.css"
 import { type PropsWithChildren } from "react"
 import type { Metadata } from "next"
 
-import { WithNavbar } from "@/components/layouts/with-navbar"
+import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,7 +14,8 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="ja">
       <body>
-        <WithNavbar>{children}</WithNavbar>
+        {children}
+        <Toaster />
       </body>
     </html>
   )
