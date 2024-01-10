@@ -1,8 +1,11 @@
+import { cookies } from "next/dist/client/components/headers"
+
 import { type Analysis, type Analytics } from "@/types/api/analysis"
 import { type User } from "@/types/api/user"
 import { sleep } from "@/lib/utils"
 
 export async function GET(request: Request) {
+  cookies()
   await sleep()
   const token = request.headers.get("token")
 
