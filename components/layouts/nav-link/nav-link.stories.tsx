@@ -5,10 +5,9 @@ import { NavLink } from "."
 
 const icons = { BarChart, HeartHandshake, MessageCircle }
 
-const meta: Meta<typeof NavLink> = {
+export default {
   title: "Layouts/NavLink",
   component: NavLink,
-  tags: ["autodocs"],
   argTypes: {
     icon: {
       options: Object.keys(icons),
@@ -23,15 +22,14 @@ const meta: Meta<typeof NavLink> = {
       },
     },
   },
-}
+} satisfies Meta<typeof NavLink>
 
-export default meta
 type Story = StoryObj<typeof NavLink>
 
-export const Analysis: Story = {
+export const Analysis = {
   args: {
     href: "/",
     label: "分析",
     icon: BarChart,
   },
-}
+} satisfies Story

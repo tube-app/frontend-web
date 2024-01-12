@@ -2,17 +2,15 @@ import type { Meta, StoryObj } from "@storybook/react"
 
 import { WithNavbar } from "."
 
-const meta: Meta<typeof WithNavbar> = {
+export default {
   title: "Layouts/WithNavbar",
   component: WithNavbar,
-  tags: ["autodocs"],
-}
+} satisfies Meta<typeof WithNavbar>
 
-export default meta
 type Story = StoryObj<typeof WithNavbar>
 
-export const Default: Story = {
+export const Default = {
   args: {
     children: <div>childrenの要素</div>,
   },
-}
+} satisfies Story
