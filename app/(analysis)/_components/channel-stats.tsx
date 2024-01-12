@@ -1,4 +1,5 @@
 import { env } from "process"
+import { signOut } from "@/auth"
 
 import { type Analysis } from "@/types/api/analysis"
 import { fetcher } from "@/lib/utils"
@@ -23,6 +24,16 @@ export async function ChannelStats({ token }: { token: string }) {
         </p>
         <p className="text-sm text-muted-foreground">チャンネル登録者</p>
       </div>
+      <form
+        action={async () => {
+          "use server"
+          await signOut()
+        }}
+      >
+        <button className="flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3">
+          <div className="hidden md:block">Sign Out</div>
+        </button>
+      </form>
     </div>
   )
 }
