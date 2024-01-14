@@ -17,3 +17,8 @@ export const apiAuthPrefix: string = "/api/auth"
  * ログイン後のデフォルトリダイレクトパス
  */
 export const DEFAULT_LOGIN_REDIRECT: string = "/"
+
+/**
+ * ログアウト後のデフォルトリダイレクトパス
+ */
+export const DEFAULT_LOGOUT_REDIRECT: string = "/sign-in"

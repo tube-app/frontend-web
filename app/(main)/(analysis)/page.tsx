@@ -1,6 +1,7 @@
 import { Suspense } from "react"
 import type { Metadata } from "next"
 import { signOut as signOutByAuthJS } from "@/auth"
+import { DEFAULT_LOGOUT_REDIRECT } from "@/routes"
 
 import { Button } from "@/components/ui/button"
 import { ChannelStatsSkeleton } from "@/components/skeletons/channel-stats-skeleton"
@@ -28,7 +29,9 @@ export default function AnalysisPage() {
           action={async () => {
             "use server"
 
-            await signOutByAuthJS()
+            await signOutByAuthJS({
+              redirectTo: DEFAULT_LOGOUT_REDIRECT,
+            })
           }}
         >
           <Button variant={"ghost"} type="submit">

@@ -17,20 +17,16 @@ export default auth((req) => {
   const isPublicRoute = publicRoutes.includes(nextUrl.pathname)
   const isAuthRoute = authRoutes.includes(nextUrl.pathname)
 
-  if (isApiAuthRoute) {
+  if (isApiAuthRoute || isPublicRoute) {
     return null
   }
 
   if (isAuthRoute) {
-    if (isLoggedIn) {
-      return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl))
+    if (!isLoggedIn) {
+      return null
     }
 
-    return null
-  }
-
-  if (!isLoggedIn && !isPublicRoute) {
-    return Response.redirect(new URL("/sign-in", nextUrl))
+    return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl))
   }
 
   return null
