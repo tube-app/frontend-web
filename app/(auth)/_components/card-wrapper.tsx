@@ -1,7 +1,5 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 
-import { Header } from "./header"
-
 interface CardWrapperProps {
   children: React.ReactNode
 }
@@ -9,8 +7,8 @@ interface CardWrapperProps {
 export const CardWrapper = ({ children }: CardWrapperProps) => {
   return (
     <Card className="w-[480px] shadow-md">
-      <CardHeader>
-        <Header label="サインイン" />
+      <CardHeader className="flex w-full items-center justify-center">
+        <h1 className="text-2xl font-semibold">サインイン</h1>
       </CardHeader>
       <CardContent>{children}</CardContent>
     </Card>

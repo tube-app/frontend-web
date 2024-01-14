@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { useToast } from "@/components/ui/use-toast"
+import { PasswordInput } from "@/components/password-input"
 import { Spinner } from "@/components/spinner"
 import { CardWrapper } from "@/app/(auth)/_components/card-wrapper"
 
@@ -75,7 +76,7 @@ export function SignInForm() {
               <FormItem>
                 <FormLabel>パスワード</FormLabel>
                 <FormControl>
-                  <Input placeholder="1234567" {...field} />
+                  <PasswordInput placeholder="123456" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
