@@ -9,7 +9,6 @@ export default {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "msw-storybook-addon",
-    "storybook-addon-module-mock",
   ],
   staticDirs: ["../public"],
   framework: {
