@@ -2,13 +2,11 @@ import type { Meta, StoryObj } from "@storybook/react"
 
 import { ChannelStatsSkeleton } from "."
 
-const meta: Meta<typeof ChannelStatsSkeleton> = {
+export default {
   title: "Skeleton/ChannelStatsSkeleton",
   component: ChannelStatsSkeleton,
-  tags: ["autodocs"],
-}
+} satisfies Meta<typeof ChannelStatsSkeleton>
 
-export default meta
 type Story = StoryObj<typeof ChannelStatsSkeleton>
 
-export const Default: Story = {}
+export const Default = {} satisfies Story

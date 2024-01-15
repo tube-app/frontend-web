@@ -2,18 +2,23 @@ import type { Meta, StoryObj } from "@storybook/react"
 
 import { BadgeButton } from "."
 
-const meta: Meta<typeof BadgeButton> = {
+export default {
   title: "Comments/BadgeButton",
   component: BadgeButton,
-  tags: ["autodocs"],
-}
+} satisfies Meta<typeof BadgeButton>
 
-export default meta
 type Story = StoryObj<typeof BadgeButton>
 
-export const Default: Story = {
+export const Default = {
   args: {
     value: "core-fan",
     children: "コアファン",
   },
-}
+} satisfies Story
+
+export const First = {
+  args: {
+    value: "first",
+    children: "初回コメント",
+  },
+} satisfies Story

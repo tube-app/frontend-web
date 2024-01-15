@@ -1,8 +1,14 @@
-import type { Preview } from "@storybook/react"
-
 import "../app/globals.css"
 
-const preview = {
+import type { Preview } from "@storybook/react"
+import { initialize, mswLoader } from "msw-storybook-addon"
+
+initialize({
+  onUnhandledRequest: "bypass",
+})
+
+export default {
+  loaders: [mswLoader],
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
@@ -19,5 +25,3 @@ const preview = {
     },
   },
 } satisfies Preview
-
-export default preview

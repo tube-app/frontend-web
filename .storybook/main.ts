@@ -1,6 +1,6 @@
 import type { StorybookConfig } from "@storybook/nextjs"
 
-const config: StorybookConfig = {
+export default {
   stories: [
     "../app/**/*.stories.@(js|jsx|ts|tsx)",
     "../components/**/*.stories.@(js|jsx|ts|tsx)",
@@ -8,17 +8,17 @@ const config: StorybookConfig = {
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
+    "msw-storybook-addon",
   ],
+  staticDirs: ["../public"],
   framework: {
     name: "@storybook/nextjs",
     options: {},
   },
-  docs: {
-    autodocs: "tag",
-  },
   features: {
     experimentalNextRSC: true,
   },
-}
-export default config
+  docs: {
+    autodocs: true,
+  },
+} satisfies StorybookConfig

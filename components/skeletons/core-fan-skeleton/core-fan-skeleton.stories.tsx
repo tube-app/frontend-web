@@ -2,17 +2,15 @@ import type { Meta, StoryObj } from "@storybook/react"
 
 import { CoreFanSkeleton } from "."
 
-const meta: Meta<typeof CoreFanSkeleton> = {
+export default {
   title: "Skeleton/CoreFanSkeleton",
   component: CoreFanSkeleton,
-  tags: ["autodocs"],
-}
+} satisfies Meta<typeof CoreFanSkeleton>
 
-export default meta
 type Story = StoryObj<typeof CoreFanSkeleton>
 
-export const Default: Story = {
+export const Default = {
   args: {
     rank: 1,
   },
-}
+} satisfies Story
