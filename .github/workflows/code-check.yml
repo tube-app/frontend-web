@@ -40,12 +40,16 @@ jobs:
     name: Lint
     steps:
       - uses: actions/checkout@v3
-      - name: Setup pnpm cache
+      - name: Use pnpm cache
         uses: actions/cache@v3
         with:
           path: ${{ needs.setup.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: ${{ runner.os }}-pnpm-store-
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: ${{ runner.os }}-pnpm-
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 8.6.1
       - run: pnpm lint
 
   format:
@@ -54,12 +58,16 @@ jobs:
     name: Format
     steps:
       - uses: actions/checkout@v3
-      - name: Setup pnpm cache
+      - name: Use pnpm cache
         uses: actions/cache@v3
         with:
           path: ${{ needs.setup.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: ${{ runner.os }}-pnpm-store-
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: ${{ runner.os }}-pnpm-
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 8.6.1
       - run: pnpm format:check
 
   tsc:
@@ -68,12 +76,16 @@ jobs:
     name: TypeScript
     steps:
       - uses: actions/checkout@v3
-      - name: Setup pnpm cache
+      - name: Use pnpm cache
         uses: actions/cache@v3
         with:
           path: ${{ needs.setup.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: ${{ runner.os }}-pnpm-store-
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: ${{ runner.os }}-pnpm-
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 8.6.1
       - run: pnpm tsc
 
   e2e:
@@ -82,11 +94,15 @@ jobs:
     name: E2E Test
     steps:
       - uses: actions/checkout@v3
-      - name: Setup pnpm cache
+      - name: Use pnpm cache
         uses: actions/cache@v3
         with:
           path: ${{ needs.setup.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: ${{ runner.os }}-pnpm-store-
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: ${{ runner.os }}-pnpm-
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 8.6.1
       - run: pnpm exec playwright install
       - run: pnpm test:e2e
