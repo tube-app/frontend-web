@@ -10,7 +10,7 @@ import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { buttonVariants } from "@/components/ui/button"
 
-import { type TabValue } from "./types"
+import { type TabValue } from "../types"
 
 interface CommentsProps {
   tabValue: TabValue
@@ -18,7 +18,7 @@ interface CommentsProps {
 
 export async function Comments({ tabValue }: CommentsProps) {
   const commentThreads = await fetcher<CommentThread[]>({
-    url: `${env.API_ENDPOINT}/mock/comments?tab=${tabValue}`,
+    url: `${env.NEXT_PUBLIC_API_ENDPOINT}/mock/comments?tab=${tabValue}`,
     cache: "no-store",
   })
 

@@ -8,7 +8,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 export async function CoreFansList({ token }: { token: string }) {
   const coreFans = await fetcher<CoreFans[]>({
-    url: `${env.API_ENDPOINT}/mock/core-fans`,
+    url: `${env.NEXT_PUBLIC_API_ENDPOINT}/mock/core-fans`,
     headers: { token },
   })
 

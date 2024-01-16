@@ -20,7 +20,7 @@ export default async function CommentDetailsPage({
     : "core-fan"
 
   const thread = await fetcher<CommentThread>({
-    url: `${env.API_ENDPOINT}/mock/comments/${id}?tab=${tabValue}`,
+    url: `${env.NEXT_PUBLIC_API_ENDPOINT}/mock/comments/${id}?tab=${tabValue}`,
     cache: "no-store",
   })
 

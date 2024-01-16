@@ -11,7 +11,7 @@ type Post = {
 
 export default async function Home() {
   const post = await fetcher<Post>({
-    url: `${env.API_ENDPOINT}/mock/posts/1`,
+    url: `${env.NEXT_PUBLIC_API_ENDPOINT}/mock/posts/1`,
   })
 
   return (

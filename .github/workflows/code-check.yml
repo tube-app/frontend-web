@@ -8,6 +8,8 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     name: Lint
+    env:
+      NEXT_PUBLIC_API_ENDPOINT: 'http://localhost:3000/api'
     steps:
       - uses: actions/checkout@v3
         with:

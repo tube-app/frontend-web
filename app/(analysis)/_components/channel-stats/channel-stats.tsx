@@ -1,4 +1,4 @@
-import { env } from "process"
+import { env } from "@/env.mjs"
 
 import { type Analysis } from "@/types/api/analysis"
 import { fetcher } from "@/lib/utils"
@@ -6,7 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 export async function ChannelStats({ token }: { token: string }) {
   const { user, analytics } = await fetcher<Analysis>({
-    url: `${env.API_ENDPOINT}/mock/analysis`,
+    url: `${env.NEXT_PUBLIC_API_ENDPOINT}/mock/analysis`,
     headers: { token },
   })
 

@@ -15,7 +15,7 @@ export async function GET(req: NextRequest) {
   const id = searchParams.get("id")
 
   const posts: Post[] = await fetcher<Post[]>({
-    url: `${env.API_ENDPOINT}/mock/posts`,
+    url: `${env.NEXT_PUBLIC_API_ENDPOINT}/mock/posts`,
   })
 
   const post = posts.find((post) => post.id === Number(id))

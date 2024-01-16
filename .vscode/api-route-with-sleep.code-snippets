@@ -9,7 +9,7 @@
       "  await sleep()",
       "",
       "  const data = await fetcher<T>({",
-      "    url: `${env.API_ENDPOINT}/mock/your_endpoint`,",
+      "    url: `${env.NEXT_PUBLIC_API_ENDPOINT}/mock/your_endpoint`,",
       "  })",
       "",
       "  if (!data) {",

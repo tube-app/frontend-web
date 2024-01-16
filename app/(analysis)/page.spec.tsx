@@ -2,47 +2,23 @@ import { expect, test } from "next/experimental/testmode/playwright"
 import { env } from "@/env.mjs"
 
 import { type Analysis } from "@/types/api/analysis"
-import { type User } from "@/types/api/user"
+
+import { analysisData, userData } from "../api/mock/analysis/data"
 
 test("/analysis page - successful data rendering", async ({ page, next }) => {
   next.onFetch((request) => {
-    if (request.url === `${env.API_ENDPOINT}/mock/analysis`) {
+    if (request.url === `${env.NEXT_PUBLIC_API_ENDPOINT}/mock/analysis`) {
       const token = request.headers.get("token")
-      const userData: User[] = [
-        {
-          id: "c7d091db-8b2b-4b62-a71f-0a13b6a42c1a",
-          userId: "jfdijafjiodsjfdsa",
-          name: "しまぶーのIT大学",
-          image: "https://github.com/shadcn.png",
-        },
-        {
-          id: "a2fcb3ec-f0cb-4c63-92d4-1f0a278ff96e",
-          userId: "fdasfsafsaf",
-          name: "いかついやーつ",
-          image: "https://github.com/shadcn.png",
-        },
-        {
-          id: "e4bca1fb-64f2-4352-b29b-7cf51d3e6f82",
-          userId: "fdasfbbbg",
-          name: "ゲーム好きなやーつ",
-          image: "https://github.com/shadcn.png",
-        },
-      ]
 
       const user = userData.find((user) => user.id === token)
-
-      if (!user) {
+      const analytics = analysisData.find((data) => data.id === user?.id)
+      if (!user || !analytics) {
         return new Response(null, { status: 404 })
       }
 
       const res: Analysis = {
         user,
-        analytics: {
-          id: "c7d091db-8b2b-4b62-a71f-0a13b6a42c1a",
-          subscribers: 118000,
-          currentMonth: { comment: 123, like: 804 },
-          prevMonth: { comment: 92, like: 1234 },
-        },
+        analytics,
       }
 
       return new Response(JSON.stringify(res), {

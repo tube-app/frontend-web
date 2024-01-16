@@ -1,48 +1,16 @@
 import { expect, test } from "next/experimental/testmode/playwright"
 import { env } from "@/env.mjs"
 
-import { type CoreFans } from "@/types/api/core-fans"
+import { coreFansData } from "../api/mock/core-fans/data"
 
-const data: CoreFans[] = [
-  {
-    name: "いかついやーつ",
-    id: "jfdijafjiodsjfdsa",
-    image: "https://github.com/shadcn.png",
-    commentNum: 35,
-  },
-  {
-    name: "ゲーム好きなやーつ",
-    id: "fdasfsafsaf",
-    image: "https://github.com/shadcn.png",
-    commentNum: 23,
-  },
-  {
-    name: "ダンスしてるやーつ",
-    id: "fdasfbbbg",
-    image: "https://github.com/shadcn.png",
-    commentNum: 20,
-  },
-  {
-    name: "観戦してるやーつ",
-    id: "bntrnr",
-    image: "https://github.com/shadcn.png",
-    commentNum: 19,
-  },
-  {
-    name: "ネッシーやーつ",
-    id: "nessy",
-    image: "https://github.com/shadcn.png",
-    commentNum: 16,
-  },
-]
 test("/core-fans page - successful data rendering", async ({ page, next }) => {
   next.onFetch((request) => {
-    if (request.url === `${env.API_ENDPOINT}/mock/core-fans`) {
-      if (!data) {
+    if (request.url === `${env.NEXT_PUBLIC_API_ENDPOINT}/mock/core-fans`) {
+      if (!coreFansData) {
         return new Response(null, { status: 404 })
       }
 
-      return new Response(JSON.stringify(data), {
+      return new Response(JSON.stringify(coreFansData), {
         headers: { "Content-Type": "application/json" },
       })
     }
@@ -56,9 +24,9 @@ test("/core-fans page - successful data rendering", async ({ page, next }) => {
 
   await expect(page.getByRole("listitem")).toHaveCount(5)
 
-  for (let i = 0; i < data.length; i++) {
+  for (let i = 0; i < coreFansData.length; i++) {
     const item = await page.textContent(`li:nth-child(${i + 1})`)
-    expect(item).toContain(data[i]?.name)
-    expect(item).toContain(data[i]?.id)
+    expect(item).toContain(coreFansData[i]?.name)
+    expect(item).toContain(coreFansData[i]?.id)
   }
 })
