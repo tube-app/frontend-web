@@ -2,7 +2,7 @@ export type CommentsNumRanking = {
   data: Comment[]
 }
 
-interface Comment {
+type Comment = {
   channel_id: string
   custom_url: string
   title: string
