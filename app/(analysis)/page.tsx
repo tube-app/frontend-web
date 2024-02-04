@@ -1,7 +1,6 @@
 import { Suspense } from "react"
 import type { Metadata } from "next"
 
-import { ChannelStatsSkeleton } from "@/components/skeletons/channel-stats-skeleton"
 import { KeyIndicatorSkeleton } from "@/components/skeletons/key-indicator-skeleton"
 
 import { ChannelStats } from "./_components/channel-stats"
@@ -13,21 +12,16 @@ export const metadata: Metadata = {
 }
 
 export default function AnalysisPage() {
-  // sessionから取得？
-  const token = "c7d091db-8b2b-4b62-a71f-0a13b6a42c1a"
-
   return (
     <div className="flex flex-col gap-10">
-      <Suspense fallback={<ChannelStatsSkeleton />}>
-        <ChannelStats token={token} />
-      </Suspense>
+      <ChannelStats />
       <div className="flex flex-col gap-2">
         <div className="flex items-center justify-between">
           <p className="text-2xl font-bold">重要指標</p>
           <p className="text-sm text-muted-foreground">過去28日間</p>
         </div>
-        <Suspense fallback={<KeyIndicatorSkeleton count={2} />}>
-          <KeyIndicator token={token} />
+        <Suspense fallback={<KeyIndicatorSkeleton count={3} />}>
+          <KeyIndicator />
         </Suspense>
       </div>
       <div>

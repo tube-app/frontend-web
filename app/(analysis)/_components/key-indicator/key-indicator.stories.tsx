@@ -2,7 +2,7 @@ import { env } from "@/env.mjs"
 import type { Meta, StoryObj } from "@storybook/react"
 import { http, HttpResponse } from "msw"
 
-import { analysisData, userData } from "@/app/api/mock/analysis/data"
+import { importantIndicators } from "@/lib/mock-data"
 
 import { KeyIndicator } from "."
 
@@ -20,17 +20,8 @@ export const Default = {
   parameters: {
     msw: {
       handlers: [
-        http.get(
-          `${env.NEXT_PUBLIC_API_ENDPOINT}/mock/analysis`,
-          ({ request }) =>
-            HttpResponse.json({
-              user: userData.find(
-                (user) => user.id === request.headers.get("token")
-              ),
-              analytics: analysisData.find(
-                (analysis) => analysis.id === request.headers.get("token")
-              ),
-            })
+        http.get(`${env.NEXT_PUBLIC_API_ENDPOINT}/importantIndicators`, () =>
+          HttpResponse.json(importantIndicators)
         ),
       ],
     },

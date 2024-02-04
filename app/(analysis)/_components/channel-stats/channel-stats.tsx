@@ -1,14 +1,14 @@
-import { env } from "@/env.mjs"
-
-import { type Analysis } from "@/types/api/analysis"
-import { fetcher } from "@/lib/utils"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
-export async function ChannelStats({ token }: { token: string }) {
-  const { user, analytics } = await fetcher<Analysis>({
-    url: `${env.NEXT_PUBLIC_API_ENDPOINT}/mock/analysis`,
-    headers: { token },
-  })
+export function ChannelStats() {
+  // TODO: いったん直書きにする
+  const user = {
+    id: "c7d091db-8b2b-4b62-a71f-0a13b6a42c1a",
+    userId: "jfdijafjiodsjfdsa",
+    name: "しまぶーのIT大学",
+    image: "https://github.com/shadcn.png",
+    subscribers: 118000,
+  }
 
   return (
     <div className="flex items-center gap-3 self-stretch">
@@ -19,7 +19,7 @@ export async function ChannelStats({ token }: { token: string }) {
       <div className="flex flex-col items-start justify-center">
         <p className="line-clamp-1 text-lg">{user.name}</p>
         <p className="text-2xl font-bold">
-          {analytics.subscribers.toLocaleString()}
+          {user.subscribers.toLocaleString()}
         </p>
         <p className="text-sm text-muted-foreground">チャンネル登録者</p>
       </div>
