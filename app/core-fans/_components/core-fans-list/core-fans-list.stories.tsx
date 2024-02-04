@@ -2,7 +2,7 @@ import { env } from "@/env.mjs"
 import type { Meta, StoryObj } from "@storybook/react"
 import { http, HttpResponse } from "msw"
 
-import { coreFansData } from "@/app/api/mock/core-fans/data"
+import { commentsNumRanking } from "@/lib/mock-data"
 
 import { CoreFansList } from "."
 
@@ -17,8 +17,8 @@ export const Default = {
   parameters: {
     msw: {
       handlers: [
-        http.get(`${env.NEXT_PUBLIC_API_ENDPOINT}/mock/core-fans`, () =>
-          HttpResponse.json(coreFansData)
+        http.get(`${env.NEXT_PUBLIC_API_ENDPOINT}/commentsNumRanking`, () =>
+          HttpResponse.json(commentsNumRanking)
         ),
       ],
     },
