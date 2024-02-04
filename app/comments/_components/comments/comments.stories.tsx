@@ -2,7 +2,7 @@ import { env } from "@/env.mjs"
 import { type Meta, type StoryObj } from "@storybook/react"
 import { http, HttpResponse } from "msw"
 
-import { coreFanData } from "@/app/api/mock/comments/data"
+import { firstComment } from "@/lib/mock-data"
 
 import { Comments } from "."
 
@@ -20,9 +20,8 @@ export const Default = {
   parameters: {
     msw: {
       handlers: [
-        http.get(
-          `${env.NEXT_PUBLIC_API_ENDPOINT}/mock/comments?tab=core-fan`,
-          () => HttpResponse.json(coreFanData)
+        http.get(`${env.NEXT_PUBLIC_API_ENDPOINT}/firstComment`, () =>
+          HttpResponse.json(firstComment)
         ),
       ],
     },

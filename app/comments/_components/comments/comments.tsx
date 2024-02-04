@@ -1,37 +1,40 @@
 import React from "react"
 import Image from "next/image"
-import Link from "next/link"
+// import Link from "next/link"
 import { env } from "@/env.mjs"
 import { Heart, MoreVertical, ThumbsUp } from "lucide-react"
 
-import { type CommentThread } from "@/types/api/comment-thread"
+import { type FirstComment } from "@/types/api/first-comment"
+// import { type UnRepliedComments } from "@/types/api/unreplied-comments"
 import { fetcher } from "@/lib/utils"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { buttonVariants } from "@/components/ui/button"
 
-import { type TabValue } from "../types"
+// import { buttonVariants } from "@/components/ui/button"
 
-interface CommentsProps {
-  tabValue: TabValue
-}
+// import { type TabValue } from "../types"
 
-export async function Comments({ tabValue }: CommentsProps) {
-  const commentThreads = await fetcher<CommentThread[]>({
-    url: `${env.NEXT_PUBLIC_API_ENDPOINT}/mock/comments?tab=${tabValue}`,
-    cache: "no-store",
+// interface CommentsProps {
+//   tabValue: TabValue
+// }
+
+// export async function Comments({ tabValue }: CommentsProps) {
+export async function Comments() {
+  const { data: firstComment } = await fetcher<FirstComment>({
+    url: `${env.NEXT_PUBLIC_API_ENDPOINT}/firstComment`,
   })
 
   return (
     <section className="flex flex-col gap-4">
-      {commentThreads.map((thread) => (
-        <div key={thread.id}>
+      {firstComment.map((thread) => (
+        <div key={thread.videoId}>
           <div className="flex justify-between">
-            <h2 className="text-xl font-semibold">{thread.title}</h2>
+            <h2 className="text-xl font-semibold">{thread.videoTitle}</h2>
             <div className="w-20 lg:w-24">
               <AspectRatio ratio={16 / 9} className="bg-muted">
                 <Image
-                  src={thread.thumbnail}
+                  // TODO: APIレスポンスに差し替え
+                  src="https://img.youtube.com/vi/5qap5aO4i9A/hqdefault.jpg"
                   alt="thumbnail"
                   fill
                   className="rounded-md object-cover"
@@ -42,26 +45,30 @@ export async function Comments({ tabValue }: CommentsProps) {
           <div className="flex items-start space-x-4">
             <Avatar>
               <AvatarImage
-                src={thread.commentAuthorIcon}
-                alt={`@${thread.commentAuthorName}`}
+                // TODO: APIレスポンスに差し替え
+                src="https://img.youtube.com/vi/5qap5aO4i9A/hqdefault.jpg"
+                alt={thread.authorCustomUrl}
               />
               <AvatarFallback>
-                {thread.commentAuthorName.slice(0, 2).toUpperCase()}
+                {thread.authorTitle.slice(0, 2).toUpperCase()}
               </AvatarFallback>
             </Avatar>
             <div className="grid w-full gap-1">
               <p className="text-sm text-muted-foreground">
-                {thread.commentAuthorName}
+                {thread.authorTitle}
               </p>
-              <p className="text-sm leading-none">{thread.commentContent}</p>
+              <p className="text-sm leading-none">{thread.TextDisplay}</p>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <div className="flex items-center gap-1">
                     <ThumbsUp size={12} />
-                    <span className="text-sm">{thread.likeCount}</span>
+                    {/* TODO: APIレスポンスに差し替え */}
+                    <span className="text-sm">{10}</span>
                   </div>
                   <Heart
-                    fill={thread.isLiked ? "red" : "none"}
+                    // TODO: APIレスポンスに差し替え
+                    // fill={thread.isLiked ? "red" : "none"}
+                    fill="none"
                     size={12}
                     className="text-destructive"
                   />
@@ -69,7 +76,8 @@ export async function Comments({ tabValue }: CommentsProps) {
                 {/* TODO: アイコンを押下して、コメントに対する操作を行う */}
                 <MoreVertical size={16} />
               </div>
-              {thread.replies && (
+              {/* // TODO: APIレスポンスに差し替え */}
+              {/* {thread.replies && (
                 <Link
                   href={`/comments/${thread.id}?tab=${tabValue}`}
                   className={buttonVariants({
@@ -82,7 +90,7 @@ export async function Comments({ tabValue }: CommentsProps) {
                     {thread.replies.comments.length} 件の返信を表示
                   </span>
                 </Link>
-              )}
+              )} */}
             </div>
           </div>
         </div>
