@@ -1,6 +1,6 @@
 import { type ReactNode } from "react"
 
-import { BadgeButton } from "../badge-button"
+import { BadgeButton } from "@/app/(main)/comments/_components/badge-button"
 
 interface WithTabProps {
   children: ReactNode
