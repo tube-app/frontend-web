@@ -1,7 +1,7 @@
 import { expect, test } from "next/experimental/testmode/playwright"
 import { env } from "@/env.mjs"
 
-import { coreFanData } from "../api/mock/comments/data"
+import { coreFanData } from "../../api/mock/comments/data"
 
 test("/comments component - successful data rendering", async ({
   page,
