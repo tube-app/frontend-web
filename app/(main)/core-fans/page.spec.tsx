@@ -1,7 +1,7 @@
 import { expect, test } from "next/experimental/testmode/playwright"
 import { env } from "@/env.mjs"
 
-import { coreFansData } from "../api/mock/core-fans/data"
+import { coreFansData } from "../../api/mock/core-fans/data"
 
 test("/core-fans page - successful data rendering", async ({ page, next }) => {
   next.onFetch((request) => {

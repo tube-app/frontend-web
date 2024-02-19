@@ -1,6 +1,9 @@
 import { Suspense } from "react"
 import type { Metadata } from "next"
+import { signOut as signOutByAuthJS } from "@/auth"
+import { DEFAULT_LOGOUT_REDIRECT } from "@/routes"
 
+import { Button } from "@/components/ui/button"
 import { ChannelStatsSkeleton } from "@/components/skeletons/channel-stats-skeleton"
 import { KeyIndicatorSkeleton } from "@/components/skeletons/key-indicator-skeleton"
 
@@ -18,9 +21,24 @@ export default function AnalysisPage() {
 
   return (
     <div className="flex flex-col gap-10">
-      <Suspense fallback={<ChannelStatsSkeleton />}>
-        <ChannelStats token={token} />
-      </Suspense>
+      <div className="flex items-center justify-between">
+        <Suspense fallback={<ChannelStatsSkeleton />}>
+          <ChannelStats token={token} />
+        </Suspense>
+        <form
+          action={async () => {
+            "use server"
+
+            await signOutByAuthJS({
+              redirectTo: DEFAULT_LOGOUT_REDIRECT,
+            })
+          }}
+        >
+          <Button variant={"ghost"} type="submit">
+            サインアウト
+          </Button>
+        </form>
+      </div>
       <div className="flex flex-col gap-2">
         <div className="flex items-center justify-between">
           <p className="text-2xl font-bold">重要指標</p>
