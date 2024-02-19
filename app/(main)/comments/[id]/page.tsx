@@ -8,7 +8,7 @@ import { type CommentThread } from "@/types/api/comment-thread"
 import { cn, fetcher } from "@/lib/utils"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
-import { isTabValue, type TabValue } from "../_components/types"
+import { isTabValue, type TabValue } from "../_components"
 
 //  TODO: ダミーデータの差し替え
 export default async function CommentDetailsPage({

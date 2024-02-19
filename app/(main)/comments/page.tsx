@@ -3,9 +3,7 @@ import { type SearchParamProps } from "@/types"
 
 import { CommentThreadSkeleton } from "@/components/skeletons/comment-thread-skeleton"
 
-import { Comments } from "./_components/comments"
-import { isTabValue, type TabValue } from "./_components/types"
-import { WithTab } from "./_components/with-tab"
+import { Comments, isTabValue, WithTab, type TabValue } from "./_components"
 
 export default function CommentsPage({ searchParams }: SearchParamProps) {
   const tabValue: TabValue = isTabValue(searchParams.tab)
