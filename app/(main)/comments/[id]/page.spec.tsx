@@ -1,7 +1,7 @@
 import { expect, test } from "next/experimental/testmode/playwright"
 import { env } from "@/env.mjs"
 
-import { coreFanData } from "@/app/api/mock/comments/data"
+import { firstComment } from "@/lib/mock-data"
 
 test("/comments/:id - successful data rendering", async ({ page, next }) => {
   next.onFetch((request) => {
@@ -9,7 +9,7 @@ test("/comments/:id - successful data rendering", async ({ page, next }) => {
       request.url ===
       `${env.NEXT_PUBLIC_API_ENDPOINT}/mock/comments/9gy1b3V0dWJlQ34tbWVudElk?tab=core-fan`
     ) {
-      return new Response(JSON.stringify(coreFanData[0]))
+      return new Response(JSON.stringify(firstComment.data[0]))
     }
   })
   await page.goto(
