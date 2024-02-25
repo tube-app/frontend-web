@@ -12,7 +12,7 @@ git clone https://github.com/tube-app/frontend-web.git
 pnpm install
 ```
 
-3. .env.exampleを.env.localにコピーして、値を入力する
+3. .env.exampleを.env.localにコピーして、環境変数を設定してください
 
 ```bash
 cp .env.example .env.local
