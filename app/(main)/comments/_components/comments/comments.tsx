@@ -22,6 +22,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 export async function Comments() {
   const { data: firstComment } = await fetcher<FirstComment>({
     url: `${env.NEXT_PUBLIC_API_ENDPOINT}/firstComment`,
+    cache: "no-store",
   })
 
   return (
@@ -51,6 +52,7 @@ export async function Comments() {
               />
               <AvatarFallback>
                 {thread.authorTitle.slice(0, 2).toUpperCase()}
+
               </AvatarFallback>
             </Avatar>
             <div className="grid w-full gap-1">
@@ -58,6 +60,7 @@ export async function Comments() {
                 {thread.authorTitle}
               </p>
               <p className="text-sm leading-none">{thread.TextDisplay}</p>
+
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <div className="flex items-center gap-1">

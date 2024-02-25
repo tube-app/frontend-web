@@ -4,6 +4,7 @@ import { signOut as signOutByAuthJS } from "@/auth"
 import { DEFAULT_LOGOUT_REDIRECT } from "@/routes"
 
 import { Button } from "@/components/ui/button"
+
 import { KeyIndicatorSkeleton } from "@/components/skeletons/key-indicator-skeleton"
 
 import { ChannelStats } from "./_components/channel-stats"
@@ -18,7 +19,7 @@ export default function AnalysisPage() {
   return (
     <div className="flex flex-col gap-10">
       <div className="flex items-center justify-between">
-        <ChannelStats />
+
         <form
           action={async () => {
             "use server"
