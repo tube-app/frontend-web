@@ -1,27 +1,12 @@
 import { expect, test } from "next/experimental/testmode/playwright"
 import { env } from "@/env.mjs"
 
-import { type Analysis } from "@/types/api/analysis"
-
-import { analysisData, userData } from "../../api/mock/analysis/data"
+import { importantIndicators } from "@/lib/mock-data"
 
 test("/analysis page - successful data rendering", async ({ page, next }) => {
   next.onFetch((request) => {
-    if (request.url === `${env.NEXT_PUBLIC_API_ENDPOINT}/mock/analysis`) {
-      const token = request.headers.get("token")
-
-      const user = userData.find((user) => user.id === token)
-      const analytics = analysisData.find((data) => data.id === user?.id)
-      if (!user || !analytics) {
-        return new Response(null, { status: 404 })
-      }
-
-      const res: Analysis = {
-        user,
-        analytics,
-      }
-
-      return new Response(JSON.stringify(res), {
+    if (request.url === `${env.NEXT_PUBLIC_API_ENDPOINT}/importantIndicators`) {
+      return new Response(JSON.stringify(importantIndicators), {
         headers: { "Content-Type": "application/json" },
       })
     }

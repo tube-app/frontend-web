@@ -1,7 +1,7 @@
 import { expect, test } from "next/experimental/testmode/playwright"
 import { env } from "@/env.mjs"
 
-import { coreFanData } from "../../api/mock/comments/data"
+import { firstComment } from "@/lib/mock-data"
 
 test("/comments component - successful data rendering", async ({
   page,
@@ -12,7 +12,7 @@ test("/comments component - successful data rendering", async ({
       request.url ===
       `${env.NEXT_PUBLIC_API_ENDPOINT}/mock/comments?tab=core-fan`
     ) {
-      return new Response(JSON.stringify(coreFanData), {
+      return new Response(JSON.stringify(firstComment), {
         headers: { "Content-Type": "application/json" },
       })
     }
