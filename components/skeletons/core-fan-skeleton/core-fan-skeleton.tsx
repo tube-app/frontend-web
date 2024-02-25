@@ -9,13 +9,13 @@ export function CoreFanSkeleton({ rank }: { rank: number }) {
         {rank}
       </span>
       <div className="flex flex-1 items-center gap-2">
-        <Skeleton className="h-14 w-14 rounded-full" />
+        <Skeleton className="size-14 rounded-full" />
         <div className="flex flex-col space-y-2">
           <Skeleton className="h-4 w-80" />
           <Skeleton className="h-3 w-40 " />
         </div>
       </div>
-      <Skeleton className="h-7 w-7" />
+      <Skeleton className="size-7" />
       <ChevronRight size={24} className="text-muted-foreground" />
     </div>
   )

@@ -21,7 +21,7 @@ export async function CoreFansList() {
                 {index + 1}
               </span>
               <div className="flex flex-1 items-center gap-2">
-                <Avatar className="h-14 w-14">
+                <Avatar className="size-14">
                   <AvatarImage src={coreFan.thumbnail} />
                   <AvatarFallback>
                     {coreFan.title.slice(0, 2).toUpperCase()}

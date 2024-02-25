@@ -12,7 +12,7 @@ export function ChannelStats() {
 
   return (
     <div className="flex items-center gap-3 self-stretch">
-      <Avatar className="h-20 w-20">
+      <Avatar className="size-20">
         <AvatarImage src={user.image} />
         <AvatarFallback>{user.name.slice(0, 2).toUpperCase()}</AvatarFallback>
       </Avatar>
