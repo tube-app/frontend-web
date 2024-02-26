@@ -22,7 +22,7 @@ export default function CommentsPage({ searchParams }: SearchParamProps) {
           </div>
         }
       >
-        <Comments tabValue={tabValue} />
+        <Comments />
       </Suspense>
     </WithTab>
   )

@@ -1,7 +1,7 @@
 import { env } from "@/env.mjs"
 import { ArrowDownRight, ArrowUpRight } from "lucide-react"
 
-import { type Analysis } from "@/types/api/analysis"
+import { type ImportantIndicators } from "@/types/api/important-indicators"
 import {
   computeMonthOverMonthChangeRate,
   fetcher,
@@ -10,21 +10,25 @@ import {
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
-export async function KeyIndicator({ token }: { token: string }) {
-  const { analytics } = await fetcher<Analysis>({
-    url: `${env.NEXT_PUBLIC_API_ENDPOINT}/mock/analysis`,
-    headers: { token },
+export async function KeyIndicator() {
+  const { data } = await fetcher<ImportantIndicators>({
+    url: `${env.NEXT_PUBLIC_API_ENDPOINT}/importantIndicators`,
   })
   const indicators = [
     {
       title: "1動画当たりのコメント数",
-      currentNum: analytics.currentMonth.comment,
-      prevNum: analytics.prevMonth.comment,
+      thisCount: data.this.avgCommentCount,
+      lastCount: data.last.avgCommentCount,
     },
     {
       title: "1動画当たりの高評価数",
-      currentNum: analytics.currentMonth.like,
-      prevNum: analytics.prevMonth.like,
+      thisCount: data.this.avgLikeCount,
+      lastCount: data.last.avgLikeCount,
+    },
+    {
+      title: "1動画当たりの視聴回数",
+      thisCount: data.this.avgViewCount,
+      lastCount: data.last.avgViewCount,
     },
   ]
 
@@ -34,8 +38,8 @@ export async function KeyIndicator({ token }: { token: string }) {
         <li key={indicator.title}>
           <AnalyticsCard
             title={indicator.title}
-            currentNum={indicator.currentNum}
-            prevNum={indicator.prevNum}
+            thisCount={indicator.thisCount}
+            lastCount={indicator.lastCount}
           />
         </li>
       ))}
@@ -45,14 +49,14 @@ export async function KeyIndicator({ token }: { token: string }) {
 
 function AnalyticsCard({
   title,
-  currentNum,
-  prevNum,
+  thisCount,
+  lastCount,
 }: {
   title: string
-  currentNum: number
-  prevNum: number
+  thisCount: number
+  lastCount: number
 }) {
-  const rowPercentage = computeMonthOverMonthChangeRate(currentNum, prevNum)
+  const rowPercentage = computeMonthOverMonthChangeRate(thisCount, lastCount)
   const isPlus = rowPercentage > 0 ? true : false
 
   return (
@@ -63,12 +67,12 @@ function AnalyticsCard({
       <CardContent className="flex items-center justify-between p-0">
         <div className="flex items-baseline gap-2">
           <p className="text-4xl font-bold" data-testid="current-num">
-            {currentNum.toString()}
+            {thisCount.toString()}
           </p>
           <div className="flex">
             <p className="text-muted-foreground">前月</p>
             <p className="text-muted-foreground" data-testid="prev-num">
-              {prevNum.toString()}
+              {lastCount.toString()}
             </p>
           </div>
         </div>

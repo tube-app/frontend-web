@@ -5,8 +5,6 @@ import { CoreFanSkeleton } from "@/components/skeletons/core-fan-skeleton"
 import { CoreFansList } from "./_components/core-fans-list"
 
 export default function CoreFansPage() {
-  const token = "c7d091db-8b2b-4b62-a71f-0a13b6a42c1a"
-
   return (
     <div className="flex flex-col gap-5">
       <div className="flex items-center justify-between">
@@ -24,7 +22,7 @@ export default function CoreFansPage() {
           </ul>
         }
       >
-        <CoreFansList token={token} />
+        <CoreFansList />
       </Suspense>
     </div>
   )
