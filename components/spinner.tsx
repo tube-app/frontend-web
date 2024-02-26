@@ -8,10 +8,10 @@ import { cn } from "@/lib/utils"
 const spinnerVariants = cva("animate-spin text-muted-foreground", {
   variants: {
     size: {
-      default: "h-4 w-4",
-      sm: "h-2 w-2",
-      lg: "h-6 w-6",
-      icon: "h-10 w-10",
+      default: "size-4",
+      sm: "size-2",
+      lg: "size-6",
+      icon: "size-10",
     },
   },
   defaultVariants: {

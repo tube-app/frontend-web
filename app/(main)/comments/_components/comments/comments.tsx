@@ -52,7 +52,6 @@ export async function Comments() {
               />
               <AvatarFallback>
                 {thread.authorTitle.slice(0, 2).toUpperCase()}
-
               </AvatarFallback>
             </Avatar>
             <div className="grid w-full gap-1">
